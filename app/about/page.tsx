@@ -87,6 +87,19 @@ export default function AboutPage() {
 
           {/* Right Block: Mission & Vision */}
           <div className="lg:col-span-6 space-y-6">
+            {/* Custom Illustration Card */}
+            <div className="bg-[#0b1025] border border-slate-800 rounded overflow-hidden relative group shadow-lg">
+              <img
+                src="/images/about_boiler_illustration.jpg"
+                alt="Boiler Blueprint Schematic"
+                className="w-full h-52 object-cover opacity-75 group-hover:opacity-100 transition duration-300"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-60" />
+              <div className="absolute bottom-3 left-4 font-mono text-[10px] text-brand-orange font-bold uppercase tracking-widest bg-brand-dark/90 px-2.5 py-1 rounded border border-slate-800">
+                ASME CODES SPECIFICATION PLOT
+              </div>
+            </div>
             
             {/* Mission Statement */}
             <div className="bg-[#0b1025] border border-slate-800 rounded p-8 relative overflow-hidden flex gap-5">
@@ -240,25 +253,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 5. VIRTUAL PORTAL LINK */}
-      <section className="py-20 bg-[#090c1a] text-center px-4">
-        <div className="max-w-3xl mx-auto space-y-6">
-          <h2 className="font-display font-black text-2xl sm:text-3xl text-white uppercase tracking-wider">
-            ENGAGE SYSTEM MONITORING DIRECTIVES
-          </h2>
-          <p className="text-brand-gray text-xs md:text-sm max-w-lg mx-auto">
-            Authorized regional clients can enter our Virtual Client Console to track current active mechanical maintenance tickets, inspect past code approvals, and configure maintenance variables.
-          </p>
-          <div className="pt-2">
-            <Link
-              href="/client-portal"
-              className="px-8 py-3 bg-[#0e132c] border border-slate-800 hover:border-brand-orange/80 text-brand-light font-display font-black text-xs tracking-widest rounded uppercase transition transition-all duration-200 inline-block"
-            >
-              🔐 OPEN VIRTUAL PORTAL CONSOLE
-            </Link>
-          </div>
-        </div>
-      </section>
+
 
     </div>
   );

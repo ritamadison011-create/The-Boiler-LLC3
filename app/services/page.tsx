@@ -214,9 +214,23 @@ export default function ServicesPage() {
                 <h3 className="font-display font-black text-2xl uppercase tracking-wider text-slate-100 mt-4">
                   {activeService.title}
                 </h3>
-                <p className="text-xs font-mono text-brand-yellow uppercase tracking-widest font-semibold">
+  <p className="text-xs font-mono text-brand-yellow uppercase tracking-widest font-semibold">
                   Primary Code Registry: {activeService.code}
                 </p>
+              </div>
+
+              {/* Dynamic Service Illustration */}
+              <div className="border border-slate-800 rounded-lg overflow-hidden h-44 relative group shadow-inner">
+                <img
+                  src="/images/services_boiler_illustration.jpg"
+                  alt={`${activeService.title} illustration diagram`}
+                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/95 via-transparent to-transparent opacity-70" />
+                <span className="absolute bottom-3 left-4 font-mono text-[9px] text-slate-400 bg-brand-dark/80 px-2 py-0.5 rounded border border-slate-800 uppercase tracking-widest">
+                  SCHEMATIC MODULE SPECIFICATION // {activeService.id}
+                </span>
               </div>
 
               {/* Service long narrative */}

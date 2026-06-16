@@ -110,6 +110,19 @@ export default function HomePage() {
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[90vh] flex items-center justify-center bg-[#070913] border-b border-slate-900 overflow-hidden py-20 px-4 md:px-8">
         
+        {/* Boiler Machine Faded Background Image */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+          <img
+            src="/images/hero_boiler_illustration.jpg"
+            alt="Boiler Machine Background"
+            className="w-full h-full object-cover opacity-10 filter saturate-50 mix-blend-lighten"
+            referrerPolicy="no-referrer"
+          />
+          {/* Subtle radial and linear dark overlays to fade edges into slate backgrounds */}
+          <div className="absolute inset-0 bg-radial-gradient from-transparent via-[#070913]/40 to-[#070913] opacity-80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#070913]/20 via-transparent to-[#070913]" />
+        </div>
+
         {/* Dynamic Blueprint Mechanical Grid Overlay */}
         <div className="absolute inset-0 z-0 opacity-15 pointer-events-none select-none">
           {/* Main vertical blueprint divisions */}
@@ -394,6 +407,44 @@ export default function HomePage() {
             </a>
           </div>
 
+        </div>
+      </section>
+
+      {/* BRAND INFRASTRUCTURE VISUAL SPOTLIGHT */}
+      <section className="py-20 bg-[#070913] border-b border-slate-900 overflow-hidden relative">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-5 space-y-6">
+            <span className="font-mono text-xs uppercase text-brand-orange tracking-widest font-bold">
+              PHYSICAL SYSTEM SHOWCASE
+            </span>
+            <h2 className="font-display font-black text-3xl uppercase tracking-wider text-white">
+              ENGINEERED COMPRESSION VESSELS
+            </h2>
+            <div className="h-1 w-12 bg-brand-orange" />
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+              Every industrial boiler installation is drafted in precise mechanical wireframes and three-dimensional layout grids to assess water volume speed, combustion distribution efficiency, and gas exhaust clearance ratios.
+            </p>
+            <p className="text-xs text-brand-gray leading-relaxed font-sans">
+              Our technicians utilize state-of-the-art diagnostic imaging to plan steam pipe paths across intricate Georgia industrial structures, avoiding structural interference and optimizing heat convection currents.
+            </p>
+          </div>
+          <div className="lg:col-span-7">
+            <div className="border border-slate-800 bg-[#090b15] p-2 rounded-lg overflow-hidden shadow-2xl relative group">
+              <img
+                src="/images/hero_boiler_illustration.jpg"
+                alt="Boiler LLC system infrastructure"
+                className="w-full rounded h-64 sm:h-80 object-cover opacity-80 group-hover:opacity-100 transition duration-300"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-x-2 bottom-2 bg-brand-dark/95 border border-slate-800 rounded p-4 flex justify-between items-center font-mono text-xs">
+                <div>
+                  <span className="text-brand-orange block font-bold text-[10px] uppercase tracking-wide">COMPILER MODEL REGISTER</span>
+                  <span className="text-slate-300 text-[11px] block mt-0.5">THE BOILER LLC // STATE OF GEORGIA</span>
+                </div>
+                <span className="text-emerald-500 font-bold bg-emerald-950/30 px-2 py-0.5 border border-emerald-900/40 rounded uppercase text-[9px] animate-pulse">AUTHORIZATION VERIFIED</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

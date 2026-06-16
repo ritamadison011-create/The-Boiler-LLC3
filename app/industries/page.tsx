@@ -198,6 +198,20 @@ export default function IndustriesPage() {
                 </p>
               </div>
 
+              {/* Dynamic Industry Illustration */}
+              <div className="border border-slate-800 rounded-lg overflow-hidden h-40 relative group shadow-lg">
+                <img
+                  src="/images/industries_boiler_illustration.jpg"
+                  alt={`${activeIndustry.name} sector diagram`}
+                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#070913]/95 via-transparent to-transparent opacity-60" />
+                <span className="absolute bottom-3 left-4 bg-brand-dark/90 text-brand-orange font-mono text-[9px] font-extrabold border border-slate-800 rounded px-2.5 py-1 uppercase tracking-widest">
+                  SECTOR SYSTEM TOPOLOGY INDEX
+                </span>
+              </div>
+
               {/* Schematic Specifications parameters block */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-brand-dark p-5 rounded border border-slate-800/80 font-mono text-xs">
                 <div>

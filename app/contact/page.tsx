@@ -127,6 +127,20 @@ export default function ContactPage() {
 
             {/* Operating Times */}
             <div className="bg-[#0b1025] border border-slate-800 rounded-lg p-6 space-y-4">
+              {/* Dispatch Office Illustration */}
+              <div className="border border-slate-850 rounded-lg overflow-hidden h-32 relative group shadow-inner">
+                <img
+                  src="https://picsum.photos/seed/atlanta-dispatch/640/360"
+                  alt="Central Dispatch Center"
+                  className="w-full h-full object-cover opacity-55 group-hover:opacity-85 transition duration-300 filter saturate-50 hover:saturate-100"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0b1025]/95 via-transparent to-transparent opacity-80" />
+                <span className="absolute bottom-2.5 left-3 font-mono text-[8.5px] text-brand-orange bg-brand-dark/95 px-2 py-0.5 rounded border border-slate-800 uppercase tracking-widest font-black">
+                  CENTRAL DISPATCH CONTROL
+                </span>
+              </div>
+
               <h4 className="font-display font-bold text-xs text-white uppercase tracking-widest flex items-center gap-2">
                 <Clock size={14} className="text-brand-orange" /> OPERATIONAL HOUR SCHEDULES
               </h4>

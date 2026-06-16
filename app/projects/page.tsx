@@ -137,6 +137,20 @@ export default function ProjectsPage() {
                   key={p.title}
                   className="bg-[#0b0e22] border border-slate-800 rounded-lg overflow-hidden p-6 md:p-8 flex flex-col justify-between hover:border-brand-orange/40 transition duration-200 relative group"
                 >
+                  {/* Case Photo Illustration Thumbnail */}
+                  <div className="border border-slate-850 rounded-lg overflow-hidden h-44 relative mb-6 group-hover:border-slate-700 transition">
+                    <img
+                      src={`https://picsum.photos/seed/boiler-weld-${idx}/640/360`}
+                      alt={p.title}
+                      className="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition duration-350 filter saturate-50 hover:saturate-100"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/95 via-transparent to-transparent opacity-85" />
+                    <span className="absolute bottom-3 left-4 font-mono text-[9px] text-[#94a3b8] bg-brand-dark/90 px-2 py-0.5 rounded border border-slate-800 uppercase tracking-widest">
+                      SYSTEM PROJECT REGISTER INDEX • 0{idx + 1}
+                    </span>
+                  </div>
+
                   <div className="space-y-5">
                     
                     {/* Top block */}

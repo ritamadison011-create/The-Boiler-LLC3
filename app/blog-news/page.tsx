@@ -146,8 +146,22 @@ export default function BlogNewsPage() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -15 }}
                       key={art.title}
-                      className="bg-[#0b0e22] border border-slate-800 rounded-lg p-6 md:p-8 hover:border-brand-orange/35 transition duration-200 relative group"
+                      className="bg-[#0b0e22] border border-slate-800 rounded-lg p-6 md:p-8 hover:border-brand-orange/35 transition duration-200 relative group focus-within:ring-1 focus-within:ring-brand-orange/60"
                     >
+                      {/* Article Inline Illustration */}
+                      <div className="border border-slate-850 rounded-lg overflow-hidden h-40 relative mb-5 group-hover:border-slate-700 transition">
+                        <img
+                          src={`https://picsum.photos/seed/${art.title.replace(/\s+/g, '-').slice(0, 20)}/640/360`}
+                          alt={art.title}
+                          className="w-full h-full object-cover opacity-50 group-hover:opacity-75 transition duration-300 filter saturate-[0.4]"
+                          referrerPolicy="no-referrer"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0c1a]/95 via-transparent to-transparent opacity-65" />
+                        <span className="absolute bottom-3 left-4 font-mono text-[9px] text-slate-400 bg-brand-dark/90 px-2 py-0.5 rounded border border-slate-800 uppercase tracking-wider">
+                          BULLETIN DOCUMENT // REGISTRY CODE GA-{(art.title.length * 13) % 10000}
+                        </span>
+                      </div>
+
                       <div className="space-y-4">
                         
                         {/* Meta */}

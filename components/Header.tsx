@@ -152,15 +152,6 @@ export default function Header() {
 
           {/* Action Button Segment */}
           <div className="hidden lg:flex items-center gap-3">
-            {/* Virtual Client Portal Link */}
-            <Link
-              href="/client-portal"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded border border-slate-800 hover:border-slate-700 bg-brand-navy/40 text-xs font-mono font-bold text-slate-300 hover:text-white transition-all"
-            >
-              <Lock size={12} className="text-brand-orange" />
-              CLIENT PORTAL
-            </Link>
-
             {/* Request a Quote CTA */}
             <button
               onClick={openModal}
@@ -220,21 +211,7 @@ export default function Header() {
                 ))}
               </div>
 
-              <p className="text-[10px] font-mono text-brand-gray tracking-wider uppercase border-b border-slate-800/60 pt-4 pb-1.5">
-                Secure Client Operations
-              </p>
-              <div className="grid grid-cols-1 gap-2">
-                <Link
-                  href="/client-portal"
-                  className="flex items-center justify-between py-2.5 px-3 rounded border border-slate-800 bg-[#0c1021] text-sm text-slate-300 hover:text-white font-semibold"
-                >
-                  <span className="flex items-center gap-2">
-                    <Lock size={14} className="text-brand-orange" />
-                    Enter Client Console
-                  </span>
-                  <ExternalLink size={12} className="text-brand-gray" />
-                </Link>
-              </div>
+
             </div>
 
             {/* Quick Contact Block */}
