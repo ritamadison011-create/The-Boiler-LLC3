@@ -1,0 +1,6 @@
+{
+  "name": "The Boiler LLC",
+  "description": "Professional engineering company website for The Boiler LLC, providing industrial boiler installations, maintenance, mechanical designs, and energy solutions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
