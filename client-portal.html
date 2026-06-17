@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Portal | The Boiler LLC - Operational Telemetry & Calculations</title>
+  
+  <!-- Preconnect and Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#070913',
+              navy: '#0e1329',
+              card: '#151c3a',
+              orange: '#f97316',
+              yellow: '#eab308',
+              gray: '#94a3b8',
+              light: '#f8fafc',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Custom Style Rules Overrides -->
+  <link rel="stylesheet" href="./styles.css">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-brand-dark text-slate-100 font-sans flex flex-col min-h-screen">
+
+  <!-- 1. ANNOUNCEMENT & UTILITY HEADER BLOCK -->
+  <header>
+    <div class="w-full bg-[#0a0f24] border-b border-slate-900/60 py-2 px-4 md:px-8 text-[11px] font-sans tracking-wide flex flex-col md:flex-row justify-between items-center gap-2 relative z-50 select-none">
+      <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-slate-300">
+        <div class="flex items-center gap-1.5">
+          <i data-lucide="shield" class="w-4 h-4 text-[#f97316] stroke-[2.5]"></i>
+          <span class="font-medium text-slate-200">ASME Power Boiler Stamp Authorization (S, U, R)</span>
+        </div>
+        <span class="hidden sm:inline text-slate-700">|</span>
+        <div class="flex items-center gap-1.5">
+          <span class="inline-block h-2 w-2 rounded-full bg-emerald-500 shadow-sm shadow-emerald-500/50 animate-pulse"></span>
+          <span class="font-medium text-slate-200">Georgia State Licensed Boiler Operator</span>
+        </div>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-4 text-slate-350">
+        <div class="flex items-center gap-1">
+          <span class="text-slate-400">Support:</span>
+          <a href="tel:+14045550192" class="hover:text-[#f97316] font-bold text-slate-100 transition">
+            +1 (404) 555-0192
+          </a>
+        </div>
+        <span class="text-slate-700">|</span>
+        <div class="flex items-center gap-1.5 text-[#f97316]">
+          <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+          <span class="font-bold tracking-wide uppercase text-[10px]">24/7 Emergency Line</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN BAR HEAD NAVIGATION -->
+    <div id="main-fixed-header" class="w-full bg-brand-dark border-b border-slate-900/50 py-4 px-4 md:px-8 flex items-center justify-between sticky top-0 transition-all duration-350 z-40">
+      <!-- Logo Branding -->
+      <a href="index.html" class="flex items-center gap-3 group shrink-0">
+        <div class="h-11 w-11 overflow-hidden rounded border border-slate-800 bg-[#0e1329] p-0.5 group-hover:border-[#f97316] transition shrink-0">
+          <img src="./assets/images/website_logo.jpg" alt="The Boiler LLC Logo" class="h-full w-full object-cover">
+        </div>
+        <div class="flex flex-col select-none leading-[1.1] text-left">
+          <span class="font-sans font-black text-xs tracking-wider text-white">THE BOILER</span>
+          <span class="font-sans font-black text-xs tracking-wider text-[#f97316]">LLC</span>
+          <span class="font-mono text-[7px] tracking-widest text-[#94a3b8] uppercase font-bold opacity-80 mt-1">ATLANTA MECHANICAL</span>
+          <span class="font-mono text-[7px] tracking-widest text-[#94a3b8] uppercase font-bold opacity-80">ENGINEERING</span>
+        </div>
+      </a>
+
+      <!-- Desktop Links Menu -->
+      <nav class="hidden lg:flex items-center gap-x-5 xl:gap-x-7 font-display text-[10.5px] uppercase tracking-widest font-black shrink-0 text-slate-300">
+        <a href="index.html" class="nav-link py-2 relative transition duration-300 hover:text-white hover:text-[#f97316]">HOME</a>
+        <a href="about.html" class="nav-link py-2 relative transition duration-300 hover:text-white hover:text-[#f97316]">ABOUT US</a>
+        <a href="services.html" class="nav-link py-2 relative transition duration-300 hover:text-white hover:text-[#f97316]">SERVICES</a>
+        <a href="projects.html" class="nav-link py-2 relative transition duration-300 hover:text-white hover:text-[#f97316]">PROJECTS</a>
+        <a href="industries.html" class="nav-link py-2 relative transition duration-300 hover:text-white hover:text-[#f97316]">INDUSTRIES</a>
+        <a href="blog-news.html" class="nav-link py-2 relative transition duration-300 hover:text-white hover:text-[#f97316]">BLOG & NEWS</a>
+        <a href="contact.html" class="nav-link py-2 relative transition duration-300 hover:text-white hover:text-[#f97316]">CONTACT US</a>
+        <a href="client-portal.html" class="nav-link py-2 relative transition duration-300 text-[#f97316] border-b-2 border-[#f97316] pb-1 font-black">CLIENT PORTAL</a>
+      </nav>
+
+      <!-- CTA / Lock Block from screenshot -->
+      <div class="flex items-center gap-3">
+        <!-- Client Portal Lock Button -->
+        <a href="client-portal.html" class="hidden xl:flex items-center gap-1.5 border border-slate-800 bg-brand-orange/15 hover:bg-brand-orange/20 transition px-3.5 py-2.5 rounded font-display font-extrabold text-[10px] tracking-widest uppercase text-white shadow-sm shrink-0">
+          <i data-lucide="unlock" class="w-3.5 h-3.5 text-[#f97316] stroke-[2.5]"></i>
+          <span class="text-brand-orange">SECURE PORTAL</span>
+        </a>
+        <button onclick="openModal()" class="hidden sm:inline-block px-5 py-2.5 bg-[#f97316] hover:bg-[#ea580c] text-white font-display font-black text-[10px] tracking-widest rounded-md uppercase transition shadow-md shadow-brand-orange/20 transform active:scale-95 shrink-0">
+          REQUEST A QUOTE
+        </button>
+        <button id="mobile-menu-open-btn" class="lg:hidden h-10 w-10 border border-slate-800 rounded flex items-center justify-center text-slate-300 hover:text-white transition bg-brand-dark" aria-label="Toggle Navigation Panel">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div id="mobile-menu-drawer" class="fixed inset-0 bg-brand-dark/98 z-50 flex-col justify-between p-6 pointer-events-none hidden transition-all duration-300">
+    <div class="space-y-8">
+      <div class="flex items-center justify-between border-b border-slate-900 pb-4">
+        <div class="flex items-center gap-2">
+          <img src="./assets/images/website_logo.jpg" alt="Logo" class="h-8 w-8 rounded object-cover">
+          <span class="font-display font-black text-xs text-white uppercase tracking-wider">THE BOILER LLC NAVIGATION</span>
+        </div>
+        <button id="mobile-menu-close-btn" class="h-9 w-9 border border-slate-800 rounded flex items-center justify-center text-brand-gray hover:text-white" aria-label="Close Navigation Drawer">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <nav class="flex flex-col gap-5 font-display text-base font-black tracking-widest uppercase">
+        <a href="index.html" class="hover:text-brand-orange transition py-1 text-slate-300">Home</a>
+        <a href="about.html" class="hover:text-brand-orange transition py-1 text-slate-300">About Us</a>
+        <a href="services.html" class="hover:text-brand-orange transition py-1 text-slate-300">Services</a>
+        <a href="projects.html" class="hover:text-brand-orange transition py-1 text-slate-300">Projects</a>
+        <a href="industries.html" class="hover:text-brand-orange transition py-1 text-slate-300">Industries</a>
+        <a href="blog-news.html" class="hover:text-brand-orange transition py-1 text-slate-300">Newsroom</a>
+        <a href="contact.html" class="hover:text-brand-orange transition py-1 text-slate-300">Contact Us</a>
+        <a href="client-portal.html" class="hover:text-brand-orange transition py-1 text-white border-b border-slate-900">Client Portal</a>
+      </nav>
+    </div>
+    <div class="space-y-4">
+      <button onclick="openModal()" class="w-full h-12 bg-brand-orange hover:bg-brand-orange/90 text-brand-dark font-display font-black text-xs tracking-widest rounded uppercase transition flex items-center justify-center gap-2">
+        REQUEST A QUOTE <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </button>
+      <div class="text-center">
+        <a href="tel:+14045550192" class="text-xs font-mono text-brand-gray hover:text-white transition">
+          📞 LOCAL DISPATCH DESK: +1 (404) 555-0192
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main class="flex-grow">
+    <!-- SUB-HERO BLUEPRINT GRID -->
+    <section class="relative bg-brand-dark py-12 lg:py-16 overflow-hidden border-b border-slate-900 blueprint-overlay">
+      <div class="max-w-7xl mx-auto px-4 md:px-8 text-center relative z-10">
+        <span class="inline-block bg-brand-orange/10 border border-brand-orange/20 text-brand-orange px-3 py-1 rounded font-mono text-[10px] uppercase tracking-widest font-black mb-4">
+          OPERATIONAL COMMAND DECK
+        </span>
+        <h1 class="font-display font-black text-3xl sm:text-4xl md:text-5xl uppercase tracking-wider text-white leading-tight mb-3">
+          DISPATCH LOGISTICS & UTILITY DESK
+        </h1>
+        <div class="h-1 w-20 bg-brand-orange rounded mx-auto mb-4"></div>
+        <p class="text-slate-300 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+          The Boiler LLC secure control deck. Live thermodynamic parameters testing, stack draft efficiency simulations, Georgia operator shift monitoring, and ASME welder qualification directory.
+        </p>
+      </div>
+    </section>
+
+    <!-- MAIN PORTAL DASHBOARD SECTION -->
+    <section class="py-12 bg-slate-950">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        
+        <!-- Tabbed command blocks or layouts -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          <!-- LEFT SIDEBAR: STATUS FEED AND TELEMETRY -->
+          <div class="lg:col-span-4 space-y-8">
+            
+            <!-- CORE HEATING TELEMETRY (DYNAMIC INTERACTIVE) -->
+            <div id="telemetry-panel-box" class="bg-brand-navy border border-slate-800/80 rounded-xl p-5 shadow-xl transition duration-300">
+              <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="gauge" class="w-5 h-5 text-brand-orange"></i>
+                  <h3 class="font-display font-extrabold text-sm text-white uppercase tracking-wider">LIVE TELEMETRY WORKSPACE</h3>
+                </div>
+                <div class="flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full">
+                  <span id="telemetry-pulse-dot" class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span class="font-mono text-[8.5px] font-bold text-emerald-400 uppercase tracking-wide">STREAM LIVE</span>
+                </div>
+              </div>
+
+              <!-- Main Pressure Display -->
+              <div class="p-4 bg-slate-950 border border-slate-900 rounded-lg text-center relative overflow-hidden group">
+                <p class="font-mono text-[9px] uppercase tracking-widest text-[#94a3b8] mb-1">BOILER STEAM OUTFLOW</p>
+                <div class="flex justify-center items-baseline gap-1 text-white">
+                  <span id="portal-gauge-psi-value" class="font-mono font-black text-4xl tracking-tight text-white">150.4</span>
+                  <span class="font-mono leading-none text-brand-orange font-black text-xs">PSI</span>
+                </div>
+                <div class="h-1 bg-slate-900 w-full mt-3 rounded-full overflow-hidden">
+                  <div id="portal-psi-progress" class="bg-brand-orange h-full" style="width: 25%;"></div>
+                </div>
+                
+                <!-- Pressure Slider Regulator -->
+                <div class="mt-4 pt-3 border-t border-slate-900/60 text-left">
+                  <div class="flex justify-between items-center mb-1">
+                    <label for="psi-regulator-range" class="font-mono text-[8.5px] uppercase text-brand-gray">Regulator Safety Valve Override:</label>
+                    <span id="cur-regulator-limit" class="font-mono text-[9px] text-slate-300">150.4 PSI</span>
+                  </div>
+                  <input type="range" id="psi-regulator-range" min="30" max="600" value="150" 
+                         class="w-full accent-[#f97316] bg-slate-900 rounded cursor-pointer h-1.5">
+                  <div class="flex justify-between font-mono text-[7.5px] text-slate-500 mt-1">
+                    <span>30 PSI (MIN)</span>
+                    <span class="text-red-500">450 PSI (LIMIT)</span>
+                    <span>600 PSI (MAX)</span>
+                  </div>
+                </div>
+              </div>
+
+              <div id="portal-pressure-alert" class="hidden mt-3 p-3 bg-red-950/40 border border-red-900/60 rounded text-red-400 font-mono text-[9.5px] text-center leading-relaxed">
+                🚨 <span class="font-bold">CRITICAL WARNING</span>: ASME CODE OVERPRESSURE FOR POWER VESSELS. ENGAGING BLOWDOWN VALVES IMMEDIATELY.
+              </div>
+
+              <!-- Other Indicators row -->
+              <div class="grid grid-cols-2 gap-3 mt-4">
+                <div class="p-3 bg-slate-950/80 border border-slate-900 rounded-lg">
+                  <p class="font-mono text-[8px] uppercase tracking-widest text-slate-400">SHELL CORE TEMP</p>
+                  <p id="portal-core-temp" class="font-mono text-lg font-bold text-white mt-1">342.5°F</p>
+                  <span class="text-[8px] font-mono text-slate-500 uppercase">Fluctuating Dynamic</span>
+                </div>
+                <div class="p-3 bg-slate-950/80 border border-slate-900 rounded-lg">
+                  <p class="font-mono text-[8px] uppercase tracking-widest text-slate-400">WATER LEVEL INTEGRITY</p>
+                  <div class="flex items-center gap-1.5 mt-1">
+                    <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+                    <span id="portal-water-level" class="font-mono text-lg font-bold text-white">98.2%</span>
+                  </div>
+                  <span class="text-[8px] font-mono text-emerald-400 uppercase">STEADY STATE</span>
+                </div>
+              </div>
+
+              <!-- Interactive Controls Terminal -->
+              <div class="mt-4 pt-4 border-t border-slate-800">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-mono text-[9px] uppercase tracking-widest text-brand-orange font-bold">SIMULATION CONSOLE LOG</span>
+                  <button id="clear-portal-console" class="text-[8px] font-mono text-slate-500 hover:text-slate-300 uppercase">Clear</button>
+                </div>
+                
+                <div id="portal-terminal-out" class="font-mono h-28 bg-[#04060c] border border-slate-900 rounded p-2.5 overflow-y-auto text-[9px] text-[#22c55e] space-y-1 scrollbar-thin">
+                  <div>[SYSTEM] SECURE CORE STACK BOOTED.</div>
+                  <div>[SYSTEM] LISTENING FOR COMPRESSION VALVES...</div>
+                  <div>[SYSTEM] CONNECTED TO STATE DISPATCH FEED AT 3000.</div>
+                </div>
+
+                <!-- Simulation Action Buttons -->
+                <div class="grid grid-cols-2 gap-2 mt-3.5">
+                  <button id="action-trigger-blowdown" class="py-2 bg-brand-orange/10 hover:bg-brand-orange text-brand-orange hover:text-[#070913] border border-brand-orange/30 font-display font-black text-[9px] tracking-widest uppercase rounded transition transform active:scale-95 leading-none">
+                    RUN SHUTDOWN BLOWDOWN
+                  </button>
+                  <button id="action-trigger-alarm" class="py-2 bg-red-950/30 hover:bg-red-900 border border-red-900/40 text-red-400 hover:text-white font-display font-black text-[9px] tracking-widest uppercase rounded transition transform active:scale-95 leading-none">
+                    TEST EMERGENCY ALARM
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- GEORGIA LOCAL DISPATCH DESK MONITOR -->
+            <div class="bg-brand-navy border border-slate-800/80 rounded-xl p-5 shadow-xl">
+              <div class="flex items-center gap-2 border-b border-slate-800 pb-3 mb-4">
+                <i data-lucide="radio" class="w-5 h-5 text-brand-orange animate-pulse"></i>
+                <h3 class="font-display font-extrabold text-sm text-white uppercase tracking-wider">GEORGIA DISPATCH FEED</h3>
+              </div>
+              
+              <div class="space-y-3">
+                <div class="flex justify-between text-[11px] font-mono border-b border-slate-900 pb-1">
+                  <span class="text-slate-400">OPERATING SHIFT:</span>
+                  <span class="text-white font-bold uppercase">Supervisor Shift 2</span>
+                </div>
+                <div class="flex justify-between text-[11px] font-mono border-b border-slate-900 pb-1">
+                  <span class="text-slate-400">DIAGNOSTIC OFFICERS:</span>
+                  <span class="text-brand-orange font-bold">Marcus Vance, PE</span>
+                </div>
+                <div class="flex justify-between text-[11px] font-mono pb-2">
+                  <span class="text-slate-400">ACTIVE DISPATCH POOL:</span>
+                  <span id="active-dispatch-badge" class="text-[9px] bg-brand-orange/25 text-brand-orange font-bold uppercase px-2 py-0.5 rounded">3 TEAMS STANDBY</span>
+                </div>
+              </div>
+
+              <!-- Live Dispatches Feed -->
+              <div class="mt-4 space-y-2.5">
+                <h4 class="font-mono text-[9px] uppercase tracking-wider text-slate-400 font-bold">Active SLA Incidents:</h4>
+                <div id="dispatch-sla-list" class="space-y-2 max-h-[180px] overflow-y-auto pr-1">
+                  <!-- Ticket 1 -->
+                  <div class="bg-slate-950 border border-slate-900/60 rounded p-2.5 text-[10px] font-mono relative">
+                    <span class="absolute top-2 right-2 text-[8px] px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase font-bold">COMPLETED</span>
+                    <div class="text-brand-orange font-bold shrink-0">#GA-8821 (High Outage)</div>
+                    <div class="text-slate-350 text-[9px] mt-1">Atlanta Airport Term. 4 Core Gaskets.</div>
+                    <div class="text-slate-500 mt-0.5 text-[8.5px]">Operator: Officer Marcus V. | Completed in 14m</div>
+                  </div>
+                  <!-- Ticket 2 -->
+                  <div class="bg-slate-950 border border-slate-900/60 rounded p-2.5 text-[10px] font-mono relative">
+                    <span id="ticket-9014-status" class="absolute top-2 right-2 text-[8px] px-1.5 py-0.5 rounded bg-brand-orange/10 text-brand-orange border border-brand-orange/20 uppercase font-bold animate-pulse">EN ROUTE</span>
+                    <div class="text-brand-orange font-bold shrink-0">#GA-9024 (Critical Priority)</div>
+                    <div class="text-slate-350 text-[9px] mt-1">Deaerator Bypass Leak - Fulton Tech.</div>
+                    <div class="text-slate-500 mt-0.5 text-[8.5px]">ETA: <span id="ticket-9014-eta">18 mins</span> | Team Alpha</div>
+                  </div>
+                  <!-- Ticket 3 -->
+                  <div class="bg-slate-950 border border-slate-900/60 rounded p-2.5 text-[10px] font-mono relative">
+                    <span class="absolute top-2 right-2 text-[8px] px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 uppercase font-bold">DISPATCHED</span>
+                    <div class="text-brand-orange font-bold shrink-0">#GA-9104 (Maintenance Scheduled)</div>
+                    <div class="text-slate-350 text-[9px] mt-1">ASME Section I Welds - Macon Mill.</div>
+                    <div class="text-slate-500 mt-0.5 text-[8.5px]">ETA: 43 mins | Team Gamma</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COMMAND PANEL: SCIENTIFIC WORKSPACE TOOLS -->
+          <div class="lg:col-span-8 space-y-8">
+            
+            <!-- ASME THERMAL EFFICIENCY CALCULATOR -->
+            <div id="calculator-panel" class="bg-brand-navy border border-slate-800/80 rounded-xl p-6 shadow-xl relative overflow-hidden">
+              <div class="absolute top-0 right-0 h-40 w-40 bg-brand-orange/5 rounded-full blur-2xl pointer-events-none"></div>
+              
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-4 mb-5 gap-2">
+                <div class="flex items-center gap-2.5">
+                  <i data-lucide="calculator" class="w-6 h-6 text-brand-orange"></i>
+                  <div>
+                    <h3 class="font-display font-black text-base text-white uppercase tracking-wider">COMBUSTION & DRAFT EFFICIENCY CALCULATOR</h3>
+                    <p class="font-mono text-[9px] text-[#94a3b8] uppercase leading-none mt-1">ASME PTC 4.1 SECONDARY HEAT LOSS ENGINEERING WORKBENCH</p>
+                  </div>
+                </div>
+                <div class="bg-[#070913] border border-slate-850 px-3 py-1 rounded font-mono text-[10.5px] uppercase tracking-widest text-[#f97316]">
+                  NBBI STAMP ALIGNED
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 leading-relaxed">
+                <!-- Inputs Section -->
+                <div class="space-y-4">
+                  <div class="p-4 bg-slate-950 rounded-lg space-y-4 font-mono text-xs">
+                    <h4 class="font-display font-bold text-slate-200 uppercase text-[11px] tracking-wide border-b border-slate-900 pb-1.5">1. THERMODYNAMIC VARIABLES</h4>
+                    
+                    <!-- Stack Temperature -->
+                    <div>
+                      <div class="flex justify-between items-center mb-1">
+                        <label for="input-stack-temp" class="text-slate-400">STACK TEMP (FLUE GAS) *</label>
+                        <span class="text-brand-orange font-bold" id="lbl-stack-temp">380°F</span>
+                      </div>
+                      <input type="range" id="input-stack-temp" min="180" max="850" value="380" class="w-full accent-[#f97316] bg-slate-900 h-1.5 rounded">
+                      <div class="flex justify-between text-[8px] text-slate-500 mt-0.5">
+                        <span>180°F (LOW STACK)</span>
+                        <span>850°F (HIGH TEMPERATURE OUTFLOW)</span>
+                      </div>
+                    </div>
+
+                    <!-- Ambient Temp -->
+                    <div>
+                      <div class="flex justify-between items-center mb-1">
+                        <label for="input-amb-temp" class="text-slate-400">AMBIENT INLET AIR TEMP *</label>
+                        <span class="text-slate-300" id="lbl-amb-temp">70°F</span>
+                      </div>
+                      <input type="range" id="input-amb-temp" min="40" max="120" value="70" class="w-full accent-[#f97316] bg-slate-900 h-1.5 rounded">
+                      <div class="flex justify-between text-[8px] text-slate-500 mt-0.5">
+                        <span>40°F</span>
+                        <span>120°F (HEAT EXCHANGER ROOM)</span>
+                      </div>
+                    </div>
+
+                    <!-- Oxygen content -->
+                    <div>
+                      <div class="flex justify-between items-center mb-1">
+                        <label for="input-flue-o2" class="text-slate-400">FLUE GAS OXYGEN ($O_2$) LEVEL *</label>
+                        <span class="text-brand-yellow font-bold" id="lbl-flue-o2">3.5%</span>
+                      </div>
+                      <input type="range" id="input-flue-o2" min="1.0" max="12.0" step="0.1" value="3.5" class="w-full accent-[#eab308] bg-slate-900 h-1.5 rounded">
+                      <div class="flex justify-between text-[8px] text-slate-500 mt-0.5">
+                        <span>1.0% (RICH HARZARD)</span>
+                        <span>5.5% (OPTIMAL LIMITS)</span>
+                        <span>12.0% (LOW PRODUCTIVITY)</span>
+                      </div>
+                    </div>
+
+                    <!-- Fuel profile selector -->
+                    <div>
+                      <label for="input-fuel-type" class="block text-slate-400 mb-1">BOILER COMBUSTION FUEL SELECTION</label>
+                      <select id="input-fuel-type" class="w-full bg-slate-900 border border-slate-800 rounded px-3 py-2 text-white focus:outline-none focus:border-brand-orange">
+                        <option value="nat-gas" selected>Natural Gas (Methane CH4)</option>
+                        <option value="fuel-oil-2">Fuel Oil No. 2 (Light Distillate)</option>
+                        <option value="fuel-oil-6">Fuel Oil No. 6 (Bunker-C Heavy)</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Outputs and Analytics Section -->
+                <div class="flex flex-col justify-between">
+                  <div class="p-5 bg-slate-950 border border-slate-900 rounded-lg text-center space-y-4">
+                    <p class="font-mono text-[9px] uppercase tracking-widest text-[#94a3b8]">COMPUTED BOILER CO-EFFICIENCY APPROX</p>
+                    <div class="inline-flex items-baseline justify-center gap-1.5 bg-brand-navy border border-slate-800 rounded-xl px-6 py-4">
+                      <span id="efficiency-output-val" class="font-mono text-5xl font-black text-[#22c55e]">82.45</span>
+                      <span class="font-display font-extrabold text-sm text-brand-orange">%</span>
+                    </div>
+
+                    <div class="font-mono text-[10.5px] text-left space-y-2 border-t border-slate-900 pt-3">
+                      <div class="flex justify-between">
+                        <span class="text-slate-400">Dry Flue Gas Stack Loss:</span>
+                        <span class="text-slate-200" id="loss-dry-flue">6.85%</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span class="text-slate-400">Inherent Hydrogen Lock Loss ($H_2O$ Vapor):</span>
+                        <span class="text-slate-200" id="loss-moisture">9.20%</span>
+                      </div>
+                      <div class="flex justify-between pb-1 text-[11px] border-b border-slate-900">
+                        <span class="text-slate-400">ASME Unaccounted Radiation Margin:</span>
+                        <span class="text-slate-200">1.50%</span>
+                      </div>
+                      <div class="flex justify-between font-bold text-slate-100 pt-1">
+                        <span>Total Combustion Heat Output:</span>
+                        <span class="#22c55e" id="net-combustion-btu">高效 POWER STATE</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Dynamic Recommendation Alert -->
+                  <div id="calculator-recommendation-block" class="mt-4 p-4 rounded-lg bg-[#0e1329] border border-brand-orange/15 text-left font-mono text-[10.5px]">
+                    <div class="flex items-center gap-2 mb-1.5">
+                      <i data-lucide="info" class="w-4 h-4 text-brand-orange flex-shrink-0"></i>
+                      <span class="text-brand-orange uppercase font-bold tracking-wider text-[10px]">ENGINEERING DIRECTIVE</span>
+                    </div>
+                    <p class="text-slate-350 leading-relaxed" id="calculated-advice-text">
+                      Stack temperatures are currently in high steady-state performance levels. Combustion air-to-fuel ratio holds optimized ASME envelope metrics. No soot extraction required.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- GEORGIA OUTAGE ESCALATION - REPORT ON PORTAL -->
+            <div id="quick-ticket-box" class="bg-[#0b0e1b] border border-slate-800 rounded-xl p-6 shadow-xl">
+              <div class="border-b border-slate-800 pb-3 mb-4 flex justify-between items-center flex-wrap gap-2">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="alert-triangle" class="w-5 h-5 text-brand-orange"></i>
+                  <h3 class="font-display font-extrabold text-sm text-white uppercase tracking-wider">CREW CHIEF EMERGENCY INTENSE</h3>
+                </div>
+                <span class="font-mono text-[9.5px] uppercase bg-red-950 text-red-400 px-2.5 py-0.5 rounded font-bold border border-red-900/40">GA-STATE DISPATCH DESK</span>
+              </div>
+
+              <form id="escalation-incident-form" class="space-y-4 font-mono text-xs">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-[10px] text-slate-300 uppercase font-bold mb-1.5">Registered Facility Name *</label>
+                    <input type="text" id="esc-facility" required placeholder="Atlanta Medical Center Central Plant" class="w-full bg-brand-dark border border-slate-800 rounded px-2.5 py-2 text-white focus:outline-none focus:border-brand-orange text-xs">
+                  </div>
+                  <div>
+                    <label class="block text-[10px] text-slate-300 uppercase font-bold mb-1.5">Severity Level *</label>
+                    <select id="esc-severity" class="w-full bg-brand-dark border border-slate-800 rounded px-2.5 py-2 text-white focus:outline-none focus:border-brand-orange text-xs">
+                      <option value="Normal Maintenance Scheduled">Normal Operations (WPS Welding Check)</option>
+                      <option value="Critical Facility Priority">High Priority (Steam Valve Jiggle Limit)</option>
+                      <option value="Emergency Outage Escalation" selected>Emergency Outage (Active Vessel Leakage)</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-[10px] text-slate-300 uppercase font-bold mb-1.5">Immediate Tactical Issue Log *</label>
+                  <textarea id="esc-problem" required rows="3" placeholder="Identify boiler unit ID, current pressure drops, stack smoke limits, or deaerator leaks..." class="w-full bg-brand-dark border border-slate-800 rounded px-2.5 py-2 text-white focus:outline-none focus:border-brand-orange text-xs placeholder:text-slate-800"></textarea>
+                </div>
+                <div class="flex justify-end">
+                  <button type="submit" class="px-6 py-3 bg-brand-orange text-brand-dark font-display font-black text-xs uppercase tracking-widest rounded transition transform active:scale-95 flex items-center gap-1.5 shadow-md shadow-brand-orange/20">
+                    REPORT EMERGENCY OUTAGE <i data-lucide="radio" class="w-4 h-4 text-brand-dark animate-pulse"></i>
+                  </button>
+                </div>
+              </form>
+
+              <!-- Escalation status alert -->
+              <div id="escalation-success-notice" class="hidden mt-4 p-4 bg-emerald-950/40 border border-emerald-900/60 rounded text-emerald-300 font-mono text-xs">
+                <div class="flex items-center gap-2 mb-1.5">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-[#22c55e]"></i>
+                  <span class="font-bold text-[#22c55e] uppercase">ESTIMATE TICKET REGISTERED</span>
+                </div>
+                Your tactical outage logs have been direct-transmitted to Georgia Dispatcher Desk Crew Alpha. The standby technician group has been notified. Watch the live feed box above for Ticket status updates.
+              </div>
+            </div>
+
+            <!-- ASME CERTIFIED PROCEDURE DIRECTORY & STAMPS (INSTANT SEARCH FILTER) -->
+            <div id="procedures-directory" class="bg-brand-navy border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-3 gap-2">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="shield-check" class="w-5 h-5 text-brand-orange"></i>
+                  <h3 class="font-display font-extrabold text-sm text-white uppercase tracking-wider">WPS PROCEDURES & CERTIFIED COMPLIANCE STAMPS</h3>
+                </div>
+                <!-- Search wrapper -->
+                <div class="relative max-w-xs w-full sm:w-auto">
+                  <input type="text" id="wps-search-bar" placeholder="Search ASME Stamps..." class="w-full bg-brand-dark border border-slate-800 rounded-lg pl-8 pr-3 py-1.5 text-[10.5px] font-mono text-white focus:outline-none focus:border-brand-orange">
+                  <i data-lucide="search" class="w-3.5 h-3.5 text-slate-550 absolute left-2.5 top-2.5 text-brand-gray"></i>
+                </div>
+              </div>
+
+              <!-- Filterable Procedure grid -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="wps-items-grid">
+                <!-- S stamp -->
+                <div class="wps-card-item bg-slate-1050 bg-slate-950 border border-slate-900 p-3 rounded-lg flex items-start gap-3">
+                  <div class="p-2 bg-brand-orange/10 rounded border border-brand-orange/20 text-brand-orange font-mono text-xs font-black shrink-0">
+                    S-STAMP
+                  </div>
+                  <div>
+                    <h5 class="text-xs font-bold text-white uppercase font-sans">Power Boilers Authorized</h5>
+                    <p class="text-[9px] font-mono text-slate-400 mt-1 uppercase">ASME SECTION I COMPLIATION</p>
+                    <p class="text-[10px] text-slate-350 mt-1 leading-relaxed leading-normal mb-1">Covers standard high-pressure steam boilers and superheaters.</p>
+                  </div>
+                </div>
+                <!-- U stamp -->
+                <div class="wps-card-item bg-slate-950 border border-slate-900 p-3 rounded-lg flex items-start gap-3">
+                  <div class="p-2 bg-brand-orange/10 rounded border border-brand-orange/20 text-brand-orange font-mono text-xs font-black shrink-0">
+                    U-STAMP
+                  </div>
+                  <div>
+                    <h5 class="text-xs font-bold text-white uppercase font-sans">Pressure Vessels Approved</h5>
+                    <p class="text-[9px] font-mono text-slate-400 mt-1 uppercase">ASME SECTION VIII DIV I</p>
+                    <p class="text-[10px] text-slate-350 mt-1 leading-relaxed mb-1">Unfired internal pressure containment systems verification.</p>
+                  </div>
+                </div>
+                <!-- R stamp -->
+                <div class="wps-card-item bg-slate-950 border border-slate-900 p-3 rounded-lg flex items-start gap-3">
+                  <div class="p-2 bg-brand-orange/10 rounded border border-brand-orange/20 text-brand-orange font-mono text-xs font-black shrink-0">
+                    R-STAMP
+                  </div>
+                  <div>
+                    <h5 class="text-xs font-bold text-white uppercase font-sans">National Board Metallic Repair</h5>
+                    <p class="text-[9px] font-mono text-slate-400 mt-1 uppercase">NBBI NATIONAL STANDARD CODE</p>
+                    <p class="text-[10px] text-slate-350 mt-1 leading-relaxed mb-1">Authorized post-hydrostatic weld repair modifications on boilers.</p>
+                  </div>
+                </div>
+                <!-- WPS-1 -->
+                <div class="wps-card-item bg-slate-950 border border-slate-900 p-3 rounded-lg flex items-start gap-3">
+                  <div class="p-2 bg-slate-900 rounded border border-slate-800 text-brand-yellow font-mono text-xs font-black shrink-0">
+                    WPS-52
+                  </div>
+                  <div>
+                    <h5 class="text-xs font-bold text-white uppercase font-sans">Alloy Tube Manual GTAW Welds</h5>
+                    <p class="text-[9px] font-mono text-slate-400 mt-1 uppercase">SA-213 T22 CHROM-MOLY</p>
+                    <p class="text-[10px] text-slate-350 mt-1 leading-relaxed mb-1">Gas Tungsten Arc weld integrity qualification procedures and specifications.</p>
+                  </div>
+                </div>
+                <!-- WPS-2 -->
+                <div class="wps-card-item bg-slate-950 border border-slate-900 p-3 rounded-lg flex items-start gap-3">
+                  <div class="p-2 bg-slate-900 rounded border border-slate-800 text-brand-yellow font-mono text-xs font-black shrink-0">
+                    WPS-09
+                  </div>
+                  <div>
+                    <h5 class="text-xs font-bold text-white uppercase font-sans">Shielded Metal Arc (SMAW) Drum</h5>
+                    <p class="text-[9px] font-mono text-slate-400 mt-1 uppercase">SA-516 GR 70 HEAVY CARBON</p>
+                    <p class="text-[10px] text-slate-350 mt-1 leading-relaxed mb-1">Thick wall steam drums pressure-boundary longitudinal weldings.</p>
+                  </div>
+                </div>
+                <!-- WPS-3 -->
+                <div class="wps-card-item bg-slate-950 border border-slate-900 p-3 rounded-lg flex items-start gap-3">
+                  <div class="p-2 bg-slate-900 rounded border border-slate-800 text-brand-yellow font-mono text-xs font-black shrink-0">
+                    WPS-31
+                  </div>
+                  <div>
+                    <h5 class="text-xs font-bold text-white uppercase font-sans">ASME B31.1 Power Piping</h5>
+                    <p class="text-[9px] font-mono text-slate-400 mt-1 uppercase">SCHEDULE 80 MAIN STEAM HEADERS</p>
+                    <p class="text-[10px] text-slate-350 mt-1 leading-relaxed mb-1">Main distribution riser joints welding standards and thermal stress bounds.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Directory fallback -->
+              <div id="wps-fallback-nodata" class="hidden text-center py-6 font-mono text-[#94a3b8] text-xs">
+                ❌ No registered ASME stamp or WPS found matching your parameters.
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-brand-navy border-t border-slate-900 py-16 px-4 md:px-8 relative overflow-hidden z-10 select-none">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 text-left relative z-10">
+      <div class="space-y-4">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="h-10 w-10 overflow-hidden rounded border border-slate-800 bg-[#070913] p-0.5 shrink-0">
+            <img src="./assets/images/website_logo.jpg" alt="Logo" class="h-full w-full object-cover">
+          </div>
+          <p class="font-display font-black text-white text-xs tracking-wider uppercase leading-[1.1]">
+            The Boiler <span class="text-brand-orange block">LLC</span>
+          </p>
+        </a>
+        <p class="text-xs text-brand-gray leading-relaxed font-sans">
+          ASME-stamped power boiler erections, repairs, and thermal engineering. Authorized under NBBI R-Stamp certifications for state-regulated structural high-pressure welding.
+        </p>
+        <p class="text-[10px] font-mono text-slate-600 uppercase font-bold tracking-widest">
+          EST. 2026 / ATLANTA REGISTRY
+        </p>
+      </div>
+
+      <div class="space-y-4 font-mono text-xs">
+        <h4 class="font-display font-black text-sm text-white uppercase tracking-widest">SLA REGISTRY POOLS</h4>
+        <ul class="space-y-2 text-[#94a3b8] font-bold">
+          <li><a href="about.html" class="hover:text-white transition">WHO WE ARE</a></li>
+          <li><a href="services.html" class="hover:text-white transition">SERVICES & ASME CODES</a></li>
+          <li><a href="projects.html" class="hover:text-white transition">ESTIMATE MATRIX</a></li>
+          <li><a href="industries.html" class="hover:text-white transition">FACILITY BLUEPRINTS</a></li>
+          <li><a href="blog-news.html" class="hover:text-white transition">FIELD JOURNAL</a></li>
+          <li><a href="contact.html" class="hover:text-white transition">DISPATCH PORTAL</a></li>
+        </ul>
+      </div>
+
+      <div class="space-y-4">
+        <h4 class="font-display font-black text-sm text-white uppercase tracking-widest">GEORGIA DISPATCH CENTER</h4>
+        <div class="space-y-3 font-mono text-xs text-brand-gray">
+          <div class="flex items-start gap-2">
+            <i data-lucide="map-pin" class="w-4 h-4 text-brand-orange shrink-0 mt-0.5"></i>
+            <p class="font-bold">Headquarters Operations:<br>1839 Industrial Boulevard NW<br>Atlanta, Georgia 30318</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="phone" class="w-4 h-4 text-brand-orange"></i>
+            <a href="tel:+14045550192" class="hover:text-white transition font-bold">+1 (404) 555-0192 (Local Dispatch)</a>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="mail" class="w-4 h-4 text-brand-orange"></i>
+            <a href="mailto:dispatch@theboiler.com" class="hover:text-white transition font-bold">dispatch@theboiler.com</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-4 font-mono text-xs">
+        <h4 class="font-display font-black text-sm text-white uppercase tracking-widest">NEWSLETTER</h4>
+        <p class="text-xs text-brand-gray font-sans leading-relaxed">
+          Sign up to receive our emergency plant shutdown guidelines and thermal draft balancing bulletins.
+        </p>
+        <form id="footer-newsletter-form" class="space-y-2 mt-2">
+          <div class="flex">
+            <input type="email" id="newsletter-email" required placeholder="contact@plantcorp.com" class="bg-brand-dark border-y border-l border-slate-800 rounded-l outline-none focus:border-brand-orange px-3 py-2 text-white w-full">
+            <button type="submit" class="bg-brand-orange px-4 py-2 text-brand-dark uppercase font-display font-black rounded-r transition hover:bg-brand-orange/80">
+              GO
+            </button>
+          </div>
+          <p id="newsletter-status-lbl" class="text-[9.5px] text-emerald-400 uppercase tracking-wider font-semibold" style="display: none;">🎯 Logged. Direct connection secure.</p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Outer footer copyright -->
+    <div class="max-w-7xl mx-auto border-t border-slate-900/80 mt-12 pt-6 text-center text-[10px] font-mono text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-4 relative z-10">
+      <p class="uppercase font-bold">© 2026 THE BOILER LLC. ALL REGISTERS SECURED BY ATLANTA GEORGIA CODE COMPLIANCE.</p>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-slate-300 transition">ASME SEC. I & IV</a>
+        <a href="#" class="hover:text-slate-300 transition">NB-CODI R-STAMP</a>
+        <a href="#" class="hover:text-slate-300 transition">SLA GUARANTEES</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MULTI-STEP CRAWLER PROPOSAL ESTIMATOR (QUOTE MODAL WIZARD) -->
+  <div id="quote-proposal-modal" class="fixed inset-0 bg-brand-dark/90 backdrop-blur-sm z-50 flex items-center justify-center p-4 pointer-events-none opacity-0 transition-all duration-300">
+    <div class="bg-brand-navy border border-slate-850 w-full max-w-2xl rounded-xl shadow-2xl p-6 md:p-8 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-all duration-300">
+      <button id="quote-modal-close-btn" class="absolute top-4 right-4 h-9 w-9 border border-slate-800/80 rounded-lg flex items-center justify-center text-[#94a3b8] hover:text-white transition bg-[#070913] hover:border-brand-orange">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Step Status Headers -->
+      <div class="flex items-center justify-between border-b border-slate-900 pb-4 mb-6 relative">
+        <div class="flex items-center gap-2">
+          <i data-lucide="award" class="w-5 h-5 text-brand-orange"></i>
+          <div>
+            <h3 class="font-display font-black text-sm text-white uppercase tracking-wider">PROJECT SPECIFICATION WIZARD</h3>
+            <p class="font-mono text-[8px] text-slate-550 uppercase tracking-widest mt-0.5">Secure Industrial Draft Console</p>
+          </div>
+        </div>
+        <div class="font-mono text-[10px] font-black uppercase text-brand-orange" id="wizard-step-indicator">
+          STEP 1 OF 3
+        </div>
+      </div>
+
+      <!-- Progressive Navigation progress bars -->
+      <div class="grid grid-cols-3 gap-2 mb-6">
+        <div id="step-bar-1" class="h-1 bg-brand-orange rounded-full"></div>
+        <div id="step-bar-2" class="h-1 bg-slate-900 rounded-full transition-all duration-300"></div>
+        <div id="step-bar-3" class="h-1 bg-slate-900 rounded-full transition-all duration-300"></div>
+      </div>
+
+      <!-- STEP 1 CONTAINER: Choose Categories -->
+      <div id="wizard-step-1" class="space-y-4">
+        <h4 class="font-display font-black text-xs text-white uppercase tracking-wider text-left border-b border-slate-900 pb-1">1. Identify Main System Classifications</h4>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left">
+          <button data-value="High Pressure Steam" class="system-grid-option flex items-center justify-between px-4 py-3 rounded border text-left text-sm transition-all duration-200 border-brand-orange bg-brand-orange/10 text-white font-semibold">
+            <div>
+              <span class="font-display text-xs font-black uppercase block tracking-wide transition">High-Pressure Steam</span>
+              <span class="text-[9px] font-mono text-slate-400 block uppercase leading-none mt-0.5">Power Plant ASME Section I</span>
+            </div>
+            <i data-lucide="check" class="w-4 h-4 text-brand-orange check-indicator system-indicator"></i>
+          </button>
+          <button data-value="Hydronic Heating System" class="system-grid-option flex items-center justify-between px-4 py-3 rounded border text-left text-sm transition-all duration-200 border-slate-850 bg-[#0e1329] text-brand-gray hover:border-slate-700/80 hover:text-white">
+            <div>
+              <span class="font-display text-xs font-black uppercase block tracking-wide transition">Hydronic Heating Boiler</span>
+              <span class="text-[9px] font-mono text-slate-400 block uppercase leading-none mt-0.5">ASME Section IV Standard</span>
+            </div>
+            <i data-lucide="check" class="w-4 h-4 text-brand-orange check-indicator system-indicator" style="display: none;"></i>
+          </button>
+          <button data-value="Vessel Weld Repair" class="system-grid-option flex items-center justify-between px-4 py-3 rounded border text-left text-sm transition-all duration-200 border-slate-850 bg-[#0e1329] text-brand-gray hover:border-slate-700/80 hover:text-white">
+            <div>
+              <span class="font-display text-xs font-black uppercase block tracking-wide transition">ASME R-Stamp Weld Repair</span>
+              <span class="text-[9px] font-mono text-slate-400 block uppercase leading-none mt-0.5">Pressure Vessel NBBI Standards</span>
+            </div>
+            <i data-lucide="check" class="w-4 h-4 text-brand-orange check-indicator system-indicator" style="display: none;"></i>
+          </button>
+          <button data-value="Custom Steam Skid" class="system-grid-option flex items-center justify-between px-4 py-3 rounded border text-left text-sm transition-all duration-200 border-slate-850 bg-[#0e1329] text-brand-gray hover:border-slate-700/80 hover:text-white">
+            <div>
+              <span class="font-display text-xs font-black uppercase block tracking-wide transition">Custom Piping Header skid</span>
+              <span class="text-[9px] font-mono text-slate-400 block uppercase leading-none mt-0.5">ASME B31.1 / B31.3 Systems</span>
+            </div>
+            <i data-lucide="check" class="w-4 h-4 text-brand-orange check-indicator system-indicator" style="display: none;"></i>
+          </button>
+        </div>
+
+        <div class="space-y-2 pt-2">
+          <h4 class="font-display font-black text-xs text-white uppercase tracking-wider text-left border-b border-slate-900 pb-1">2. Identify Core Services Needed</h4>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-left">
+            <button data-value="New Construction" class="service-grid-option px-3 py-2 rounded border text-xs transition duration-200 border-brand-orange bg-brand-orange/10 text-white text-center font-bold">New Erection</button>
+            <button data-value="Tube Replacement" class="service-grid-option px-3 py-2 rounded border text-xs transition duration-200 border-slate-850 bg-[#0e1329] text-brand-gray hover:border-slate-700 hover:text-white text-center font-bold">Tube Rolling</button>
+            <button data-value="NDT Testing Check" class="service-grid-option px-3 py-2 rounded border text-xs transition duration-200 border-slate-850 bg-[#0e1329] text-brand-gray hover:border-slate-700 hover:text-white text-center font-bold">ASME Non-Destructive</button>
+            <button data-value="Burner Retrofit" class="service-grid-option px-3 py-2 rounded border text-xs transition duration-200 border-slate-850 bg-[#0e1329] text-brand-gray hover:border-slate-700 hover:text-white text-center font-bold">Burner Alignment</button>
+            <button data-value="Condensate Audit" class="service-grid-option px-3 py-2 rounded border text-xs transition duration-200 border-slate-850 bg-[#0e1329] text-brand-gray hover:border-slate-700 hover:text-white text-center font-bold">Thermal Balancing</button>
+            <button data-value="State Prep Inspection" class="service-grid-option px-3 py-2 rounded border text-xs transition duration-200 border-slate-850 bg-[#0e1329] text-brand-gray hover:border-slate-700 hover:text-white text-center font-bold">Licensed Operator</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2 CONTAINER: Choose Facility and timelines -->
+      <div id="wizard-step-2" class="space-y-4" style="display: none;">
+        <div class="space-y-2">
+          <label class="block font-mono text-[10px] font-bold text-slate-300 uppercase tracking-wider text-left">1. Target Location Structure / Industry</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-left">
+            <button data-value="Power Plant Erection" class="facility-grid-option flex items-center justify-between px-4 py-2.5 rounded border text-left text-sm transition-all duration-200 border-brand-orange bg-brand-orange/10 text-white font-semibold">
+              <span class="font-display text-xs font-bold uppercase transition">Power Plant / Heavy Gen</span>
+              <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange check-indicator facility-indicator"></i>
+            </button>
+            <button data-value="Chemical Processing Center" class="facility-grid-option flex items-center justify-between px-4 py-2.5 rounded border text-left text-sm transition-all duration-200 border-slate-850 bg-[#0e1329] text-brand-gray hover:border-slate-700/80 hover:text-white">
+              <span class="font-display text-xs font-bold uppercase transition">Chemical Processing Plant</span>
+              <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange check-indicator facility-indicator" style="display: none;"></i>
+            </button>
+            <button data-value="Pulp, Wood & Paper Mill" class="facility-grid-option flex items-center justify-between px-4 py-2.5 rounded border text-left text-sm transition-all duration-200 border-slate-850 bg-[#0e1329] text-brand-gray hover:border-slate-700/80 hover:text-white">
+              <span class="font-display text-xs font-bold uppercase transition">Pulp & Paper Mill Manufacturing</span>
+              <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange check-indicator facility-indicator" style="display: none;"></i>
+            </button>
+            <button data-value="Healthcare Wing" class="facility-grid-option flex items-center justify-between px-4 py-2.5 rounded border text-left text-sm transition-all duration-200 border-slate-850 bg-[#0e1329] text-brand-gray hover:border-slate-700/80 hover:text-white">
+              <span class="font-display text-xs font-bold uppercase transition">Healthcare / Hospital Wing</span>
+              <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange check-indicator facility-indicator" style="display: none;"></i>
+            </button>
+            <button data-value="Power Utility Grid" class="facility-grid-option flex items-center justify-between px-4 py-2.5 rounded border text-left text-sm transition-all duration-200 border-slate-850 bg-[#0e1329] text-brand-gray hover:border-slate-700/80 hover:text-white">
+              <span class="font-display text-xs font-bold uppercase transition">Power Utility Grid</span>
+              <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange check-indicator facility-indicator" style="display: none;"></i>
+            </button>
+            <button data-value="Commercial Office Block" class="facility-grid-option flex items-center justify-between px-4 py-2.5 rounded border text-left text-sm transition-all duration-200 border-slate-850 bg-[#0e1329] text-brand-gray hover:border-slate-700/80 hover:text-white">
+              <span class="font-display text-xs font-bold uppercase transition">Commercial Office Block</span>
+              <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange check-indicator facility-indicator" style="display: none;"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Timeline Selections -->
+        <div class="space-y-2">
+          <label class="block font-mono text-[10px] font-bold text-slate-300 uppercase tracking-wider text-left">2. Targeted Completion Duration</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-left">
+            <button data-value="Immediate Dispatch Emergency" class="timeline-grid-option flex items-center justify-between px-4 py-3 rounded border text-left text-sm transition-all duration-200 border-slate-850 bg-[#0e1329] text-brand-gray hover:border-slate-705 hover:text-white">
+              <div>
+                <span class="font-display text-xs font-bold uppercase block transition">EMERGENCY DISPATCH</span>
+                <span class="text-[9px] font-mono text-red-500 block uppercase leading-none mt-0.5 font-bold">2-Hour Local Action Response</span>
+              </div>
+              <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange check-indicator timeline-indicator" style="display: none;"></i>
+            </button>
+            <button data-value="Within 30 Days" class="timeline-grid-option flex items-center justify-between px-4 py-3 rounded border text-left text-sm transition-all duration-200 border-brand-orange bg-brand-orange/10 text-white font-semibold">
+              <div>
+                <span class="font-display text-xs font-bold uppercase block transition">SCHEDULED OUTAGE</span>
+                <span class="text-[9px] font-mono text-brand-gray block uppercase leading-none mt-0.5">Fulfillment Within 30 Days</span>
+              </div>
+              <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange check-indicator timeline-indicator"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3 CONTAINER: Direct forms contact details -->
+      <div id="wizard-step-3" class="space-y-4" style="display: none;">
+        <form id="quote-proposal-form-wrapper" class="space-y-3 font-mono text-[11px] text-left">
+          <div class="grid gap-3 md:grid-cols-2">
+            <div>
+              <label class="block text-[10px] font-bold text-slate-300 uppercase mb-1">Full Name *</label>
+              <input type="text" name="fullName" placeholder="Javarius Gay" class="w-full bg-brand-dark border border-slate-800 rounded px-3 py-1.5 text-white focus:outline-none focus:border-brand-orange">
+              <p class="text-[9px] text-red-400 mt-0.5 error-feedback" id="err-q-name"></p>
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold text-slate-300 uppercase mb-1">Corporate / Company *</label>
+              <input type="text" name="company" placeholder="Atlanta Energy Corp" class="w-full bg-brand-dark border border-slate-800 rounded px-3 py-1.5 text-white focus:outline-none focus:border-brand-orange">
+              <p class="text-[9px] text-red-400 mt-0.5 error-feedback" id="err-q-company"></p>
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold text-slate-300 uppercase mb-1">Corporate Email *</label>
+              <input type="email" name="email" placeholder="contact@atlenergy.com" class="w-full bg-brand-dark border border-slate-800 rounded px-3 py-1.5 text-white focus:outline-none focus:border-brand-orange">
+              <p class="text-[9px] text-red-400 mt-0.5 error-feedback" id="err-q-email"></p>
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold text-slate-300 uppercase mb-1">Contact Telephone *</label>
+              <input type="tel" name="phone" placeholder="+1 (404) 555-0192" class="w-full bg-brand-dark border border-slate-800 rounded px-3 py-1.5 text-white focus:outline-none focus:border-brand-orange">
+              <p class="text-[9px] text-red-400 mt-0.5 error-feedback" id="err-q-phone"></p>
+            </div>
+          </div>
+          <div>
+            <label class="block text-[10px] font-bold text-slate-300 uppercase mb-1">Detailed Specifications (Optional)</label>
+            <textarea name="details" rows="3" placeholder="Provide alloy numbers, water pressure limits, or scheduled plant shutdown dates..." class="w-full bg-brand-dark border border-slate-800 rounded px-3 py-2 text-white focus:outline-none focus:border-brand-orange placeholder:text-slate-700"></textarea>
+          </div>
+          <button type="submit" id="hidden-wizard-submit" style="display: none;"></button>
+        </form>
+      </div>
+
+      <!-- STEP success CONTAINER: Output confirmation -->
+      <div id="wizard-step-success" class="space-y-6 text-center py-6" style="display: none;">
+        <div class="h-16 w-16 bg-brand-orange/15 rounded-full flex items-center justify-center text-brand-orange mx-auto animate-bounce">
+          <i data-lucide="shield-check" class="w-8 h-8"></i>
+        </div>
+        <div class="space-y-2">
+          <h4 class="font-display font-black text-xl text-white uppercase tracking-wider">PROPOSAL PAC REGISTERED</h4>
+          <p class="text-xs text-brand-gray max-w-sm mx-auto leading-relaxed font-sans">
+            Your technical parameters have been secure-logged by our dispatcher board, a dispatcher ticket has been opened under details below.
+          </p>
+        </div>
+
+        <div class="bg-brand-dark border border-slate-850 rounded p-4 text-left font-mono text-[11px] space-y-2 max-w-sm mx-auto">
+          <div class="flex justify-between border-b border-slate-900 pb-1.5 text-brand-orange font-bold">
+            <span>TICKET RECEIPT ID:</span>
+            <span id="success-summary-ticket">TBL-2026-A28F3E</span>
+          </div>
+          <div class="flex justify-between border-b border-slate-900 pb-1.5">
+            <span class="text-slate-400">BOILER CATEGORY:</span>
+            <span class="text-slate-200" id="success-summary-system">Steam Generation</span>
+          </div>
+          <div class="flex justify-between border-b border-slate-900 pb-1.5">
+            <span class="text-slate-400">SERVICE NEEDED:</span>
+            <span class="text-slate-200" id="success-summary-service">New Installation</span>
+          </div>
+          <div class="flex justify-between border-b border-slate-900 pb-1.5">
+            <span class="text-slate-400">DISPATCH ACCOUNT:</span>
+            <span class="text-slate-200" id="success-summary-contact">Javarius Gay</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-400">TARGET TIMELINE:</span>
+            <span class="text-brand-yellow font-bold uppercase" id="success-summary-priority">SCHEDULED</span>
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <button id="quote-modal-dismiss-btn" class="px-8 py-3 bg-brand-orange font-display font-black text-xs text-brand-dark uppercase tracking-widest rounded transition hover:bg-brand-orange/80">
+            DISMISS SECURITY PORTAL
+          </button>
+        </div>
+      </div>
+
+      <!-- Progressive Navigation buttons -->
+      <div class="mt-8 pt-4 border-t border-slate-900 flex justify-between items-center">
+        <button id="quote-wizard-prev-btn" class="px-5 py-2.5 bg-brand-navy border border-slate-800 hover:border-slate-700 text-slate-300 font-mono text-[10px] font-bold uppercase tracking-widest rounded transition flex items-center gap-1.5" style="visibility: hidden;">
+          <i data-lucide="chevron-left" class="w-3.5 h-3.5"></i> PREVIOUS STEP
+        </button>
+        <button id="quote-wizard-next-btn" class="px-5 py-2.5 bg-brand-orange hover:bg-brand-orange/90 text-brand-dark font-mono text-[10px] font-bold uppercase tracking-widest rounded transition flex items-center gap-1.5">
+          CONTINUE FORWARD <i data-lucide="chevron-right" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+        </button>
+        <button id="quote-wizard-submit-btn" onclick="document.getElementById('hidden-wizard-submit').click()" class="px-5 py-2.5 bg-brand-orange hover:bg-brand-orange/90 text-brand-dark font-mono text-[10px] font-bold uppercase tracking-widest rounded transition flex items-center gap-1.5" style="display: none;">
+          SUBMIT SPECIFICATIONS <i data-lucide="check" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Main scripts inclusion -->
+  <script src="./script.js"></script>
+
+  <!-- CUSTOM PORTAL SCRIPTS FOR ENHANCED INTERACTIVITY -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Live Gauge PSI Slider & Fluctuations
+      const psiSlider = document.getElementById('psi-regulator-range');
+      const psiTextVal = document.getElementById('portal-gauge-psi-value');
+      const psiTextReg = document.getElementById('cur-regulator-limit');
+      const psiProgress = document.getElementById('portal-psi-progress');
+      const pressureAlert = document.getElementById('portal-pressure-alert');
+      const terminalOut = document.getElementById('portal-terminal-out');
+      const coreTempText = document.getElementById('portal-core-temp');
+
+      let currentBasePSI = 150.4;
+      let userOverrideActive = false;
+
+      // Logger Helper
+      const logTerminal = (msg, level = 'INFO') => {
+        const time = new Date().toLocaleTimeString();
+        const div = document.createElement('div');
+        if (level === 'RED') {
+          div.className = 'text-red-500 font-bold';
+        } else if (level === 'YELLOW') {
+          div.className = 'text-brand-yellow';
+        } else {
+          div.className = 'text-emerald-400';
+        }
+        div.textContent = `[${time}] [${level}] ${msg}`;
+        terminalOut.appendChild(div);
+        terminalOut.scrollTop = terminalOut.scrollHeight;
+      };
+
+      const updatePSIGauge = (psi) => {
+        psiTextVal.textContent = parseFloat(psi).toFixed(1);
+        psiTextReg.textContent = `${parseFloat(psi).toFixed(1)} PSI`;
+        
+        let percentage = (psi / 600) * 100;
+        psiProgress.style.width = `${percentage}%`;
+
+        // Update core temperature based on steam pressure relations (clapeyron approximation)
+        // At 150 psi, saturated steam is ~366F.
+        let tempEstimate = 100 + (Math.sqrt(psi) * 20);
+        coreTempText.textContent = `${tempEstimate.toFixed(1)}°F`;
+
+        if (psi > 450) {
+          pressureAlert.classList.remove('hidden');
+          psiProgress.className = 'bg-red-500 h-full';
+          document.getElementById('telemetry-panel-box').classList.add('border-red-500', 'shadow-red-950/20');
+        } else {
+          pressureAlert.classList.add('hidden');
+          psiProgress.className = 'bg-brand-orange h-full';
+          document.getElementById('telemetry-panel-box').classList.remove('border-red-500', 'shadow-red-950/20');
+        }
+      };
+
+      psiSlider.addEventListener('input', (e) => {
+        let val = parseFloat(e.target.value);
+        userOverrideActive = true;
+        updatePSIGauge(val);
+        logTerminal(`MANUAL VALVE REGULATOR OVERRIDE TO ${val.toFixed(1)} PSI`, 'WARN');
+        
+        if (val > 450) {
+          logTerminal(`ASME COMPLIANCE EXCEEDED IN SECTION I STEAM: SAFETY VALVE PRESSURE BEYOND 450 PSI!`, 'RED');
+        }
+      });
+
+      // Regular minor jiggle
+      setInterval(() => {
+        if (!userOverrideActive) {
+          const delta = (Math.random() - 0.5) * 1.8;
+          let newPSI = currentBasePSI + delta;
+          if (newPSI < 30) newPSI = 30;
+          if (newPSI > 600) newPSI = 600;
+          currentBasePSI = newPSI;
+          updatePSIGauge(newPSI);
+          
+          if (Math.random() > 0.7) {
+            logTerminal(`Combustion fuel-air ratio steady state at 84.15% efficiency. Checked.`);
+          }
+        }
+      }, 4000);
+
+      // Console clear
+      document.getElementById('clear-portal-console').addEventListener('click', () => {
+        terminalOut.innerHTML = '<div>[CONSOLE LOG RESET COMPLETED]</div>';
+      });
+
+      // Trigger action simulation
+      document.getElementById('action-trigger-blowdown').addEventListener('click', () => {
+        logTerminal(`[BLOWDOWN] INITIATING SEQUENTIAL PRESSURE CHAMBER BLOWDOWN...`, 'YELLOW');
+        setTimeout(() => {
+          psiSlider.value = 85;
+          userOverrideActive = true;
+          updatePSIGauge(85);
+          logTerminal(`[BLOWDOWN] AUXILIARY STEAM JET OUTFLOW PURGING SCALES... SUCCESS`, 'INFO');
+          logTerminal(`[BLOWDOWN] CHAMBER COALESCED TO 85.0 PSI SAFE PURGING LEVEL.`, 'INFO');
+          setTimeout(() => {
+            userOverrideActive = false;
+            currentBasePSI = 150.4;
+            psiSlider.value = 150;
+            logTerminal(`[BLOWDOWN] PURGE COMPLETED. RELOADING FEEDWATER WATER LOOP AT 100% QUALITY.`, 'INFO');
+          }, 3000);
+        }, 1200);
+      });
+
+      document.getElementById('action-trigger-alarm').addEventListener('click', () => {
+        logTerminal(`🚨 ALERT: RECURRENT AUDIBLE ALARM TESTING SEQUENCE LAUNCHED...`, 'RED');
+        logTerminal(`🚨 ALERT: ALARM OVERLAYS ACTIVE. SYSTEM PRESSURE AT ${parseFloat(psiSlider.value).toFixed(1)} PSI.`, 'RED');
+        
+        let flashPanel = document.getElementById('telemetry-panel-box');
+        flashPanel.classList.add('bg-red-950/30', 'border-red-600');
+        setTimeout(() => {
+          flashPanel.classList.remove('bg-red-950/30', 'border-red-600');
+          logTerminal(`🚨 ALERT: ENDING SIREN HARNESS INTRUSION SIGNAL. TEST TERMINATED GREEN.`, 'RED');
+        }, 3500);
+      });
+
+
+      // 2. Combustion Calculator Code
+      const stackRange = document.getElementById('input-stack-temp');
+      const ambRange = document.getElementById('input-amb-temp');
+      const o2Range = document.getElementById('input-flue-o2');
+      const fuelSel = document.getElementById('input-fuel-type');
+
+      const valStack = document.getElementById('lbl-stack-temp');
+      const valAmb = document.getElementById('lbl-amb-temp');
+      const valO2 = document.getElementById('lbl-flue-o2');
+      const finalEff = document.getElementById('efficiency-output-val');
+
+      const lossDryField = document.getElementById('loss-dry-flue');
+      const lossMoistField = document.getElementById('loss-moisture');
+      const adviceLabel = document.getElementById('calculated-advice-text');
+
+      const runThermicCalculation = () => {
+        let ts = parseFloat(stackRange.value);
+        let ta = parseFloat(ambRange.value);
+        let o2 = parseFloat(o2Range.value);
+        let fuel = fuelSel.value;
+
+        valStack.textContent = `${ts}°F`;
+        valAmb.textContent = `${ta}°F`;
+        valO2.textContent = `${o2}%`;
+
+        // Calculate dry gas loss: PTC formula approximation
+        // Loss ~ (StackT - AirT) * 24% * (1 + (o2 / 21 - o2))
+        let excessAirMultiplier = 1 + (o2 / (21 - o2));
+        let dryGasLoss = ((ts - ta) * 0.0163) * excessAirMultiplier;
+        
+        // Inherent moisture gas loss (fuel specific hydrogen reactions)
+        let inherentMoistureLoss = 9.5; // default gas
+        if (fuel === 'fuel-oil-2') inherentMoistureLoss = 6.4;
+        if (fuel === 'fuel-oil-6') inherentMoistureLoss = 5.25;
+
+        // Tweak loss based on stack temp
+        inherentMoistureLoss += (ts - ta) * 0.0018;
+
+        let radiationLoss = 1.5;
+
+        let totalLoss = dryGasLoss + inherentMoistureLoss + radiationLoss;
+        let finalEfficiencyValue = Math.max(40, Math.min(96, 100 - totalLoss));
+
+        finalEff.textContent = finalEfficiencyValue.toFixed(2);
+        lossDryField.textContent = `${dryGasLoss.toFixed(2)}%`;
+        lossMoistField.textContent = `${inherentMoistureLoss.toFixed(2)}%`;
+
+        // Style the efficiency text colors
+        if (finalEfficiencyValue > 82) {
+          finalEff.className = "font-mono text-5xl font-black text-emerald-400";
+        } else if (finalEfficiencyValue > 76) {
+          finalEff.className = "font-mono text-5xl font-black text-yellow-400";
+        } else {
+          finalEff.className = "font-mono text-5xl font-black text-red-400";
+        }
+
+        // Actionable advise text
+        let adviceDesc = "";
+        if (ts > 500) {
+          adviceDesc = `⚠️ STACK VENT TEMPERATURE HIGH (${ts}°F). Highly recommended to clean soot and ash build-ups on tubes, or install an ASME Stack Economizer boiler feedwater recovery loop.`;
+        } else if (o2 > 6.0) {
+          adviceDesc = `⚠️ HIGH EXCESS FLUE O2 LEVEL (${o2}%). Check draft blower dampers. Reducing surplus drafts will minimize dry gas loss and restore fuel efficiency instantly.`;
+        } else if (finalEfficiencyValue > 82) {
+          adviceDesc = `✅ OPTIMIZED ENVELOPE. Combustion metrics are within the premium safe envelope matching ASME PTC PTC-4 benchmarks. Maintain current flow rations.`;
+        } else {
+          adviceDesc = `ℹ️ Steady state operation holds standard draft margins. Consider flue feed air adjustments to scale the efficiency past 82.5%.`;
+        }
+        adviceLabel.textContent = adviceDesc;
+      };
+
+      stackRange.addEventListener('input', runThermicCalculation);
+      ambRange.addEventListener('input', runThermicCalculation);
+      o2Range.addEventListener('input', runThermicCalculation);
+      fuelSel.addEventListener('change', runThermicCalculation);
+
+      // Inicial calculation runs on load
+      runThermicCalculation();
+
+
+      // 3. Dispatch Live Reporting Form Integration
+      const escForm = document.getElementById('escalation-incident-form');
+      const escSuccess = document.getElementById('escalation-success-notice');
+      const escList = document.getElementById('dispatch-sla-list');
+
+      escForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const facility = document.getElementById('esc-facility').value;
+        const severity = document.getElementById('esc-severity').value;
+        const problem = document.getElementById('esc-problem').value;
+        const randomID = Math.floor(1000 + Math.random() * 9000);
+
+        // Append to list
+        const ticketNode = document.createElement('div');
+        ticketNode.className = 'bg-slate-950 border border-slate-900/60 rounded p-2.5 text-[10px] font-mono relative border-l-2 border-l-red-500';
+        ticketNode.innerHTML = `
+          <span class="absolute top-2 right-2 text-[8px] px-1.5 py-0.5 rounded bg-red-500/10 text-red-400 border border-red-500/20 uppercase font-bold animate-pulse">QUEUED</span>
+          <div class="text-brand-orange font-bold shrink-0">#GA-${randomID} (${severity})</div>
+          <div class="text-slate-100 font-bold mt-1 uppercase text-[9.5px]">${facility}</div>
+          <div class="text-slate-350 text-[9px] mt-0.5">${problem}</div>
+          <div class="text-slate-500 mt-1 text-[8px]">Submitted via Secure Command Desk | Dispatching unit...</div>
+        `;
+        
+        escList.prepend(ticketNode);
+
+        // Show Success Notice
+        escSuccess.classList.remove('hidden');
+        escForm.reset();
+
+        logTerminal(`EMERGENCY OUTAGE ESCALATION DETECTED FOR ${facility.toUpperCase()}: DISPATCHED TICKET #GA-${randomID}`, 'RED');
+
+        setTimeout(() => {
+          escSuccess.classList.add('hidden');
+        }, 7000);
+      });
+
+
+      // 4. Instant Search Filter for ASME stamps
+      const wpsInput = document.getElementById('wps-search-bar');
+      const wpsGrid = document.getElementById('wps-items-grid');
+      const wpsCards = document.querySelectorAll('.wps-card-item');
+      const fallbackNoData = document.getElementById('wps-fallback-nodata');
+
+      wpsInput.addEventListener('input', (e) => {
+        let query = e.target.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        wpsCards.forEach(card => {
+          let text = card.textContent.toLowerCase();
+          if (text.includes(query)) {
+            card.classList.remove('hidden');
+            card.classList.add('flex');
+            visibleCount++;
+          } else {
+            card.classList.remove('flex');
+            card.classList.add('hidden');
+          }
+        });
+
+        if (visibleCount === 0) {
+          fallbackNoData.classList.remove('hidden');
+          wpsGrid.classList.add('hidden');
+        } else {
+          fallbackNoData.classList.add('hidden');
+          wpsGrid.classList.remove('hidden');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

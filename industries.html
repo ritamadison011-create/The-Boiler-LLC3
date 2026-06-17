@@ -47,54 +47,71 @@
 
   <!-- 1. ANNOUNCEMENT & UTILITY HEADER BLOCK -->
   <header>
-    <div class="w-full bg-[#04060d] border-b border-slate-950/80 py-2.5 px-4 md:px-8 text-center text-[10px] sm:text-xs font-mono tracking-wider flex flex-col sm:flex-row justify-between items-center gap-2 relative z-50">
-      <div class="flex items-center gap-1.5 text-slate-400">
-        <span class="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-        <span>STANDBY DISPATCH STATUS: <span class="font-bold text-slate-200">ACTIVE REGULATORY WATCH</span></span>
+    <div class="w-full bg-[#0a0f24] border-b border-slate-900/60 py-2 px-4 md:px-8 text-[11px] font-sans tracking-wide flex flex-col md:flex-row justify-between items-center gap-2 relative z-50 select-none">
+      <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-slate-300">
+        <div class="flex items-center gap-1.5">
+          <i data-lucide="shield" class="w-4 h-4 text-[#f97316] stroke-[2.5]"></i>
+          <span class="font-medium text-slate-200">ASME Power Boiler Stamp Authorization (S, U, R)</span>
+        </div>
+        <span class="hidden sm:inline text-slate-705 text-slate-700">|</span>
+        <div class="flex items-center gap-1.5">
+          <span class="inline-block h-2 w-2 rounded-full bg-emerald-500 shadow-sm shadow-emerald-500/50 animate-pulse"></span>
+          <span class="font-medium text-slate-200">Georgia State Licensed Boiler Operator</span>
+        </div>
       </div>
-      <div class="flex flex-wrap items-center justify-center gap-4 text-slate-300">
-        <a href="tel:+14047401850" class="hover:text-brand-orange transition flex items-center gap-1">
-          <i data-lucide="phone" class="w-3.5 h-3.5 text-brand-orange"></i>
-          <span>+1 (404) 740-1850</span>
-        </a>
+      <div class="flex flex-wrap items-center justify-center gap-4 text-slate-350">
+        <div class="flex items-center gap-1">
+          <span class="text-slate-400">Support:</span>
+          <a href="tel:+14045550192" class="hover:text-[#f97316] font-bold text-slate-100 transition">
+            +1 (404) 555-0192
+          </a>
+        </div>
         <span class="text-slate-700">|</span>
-        <a href="mailto:solutions@theboilerllc.com" class="hover:text-brand-orange transition flex items-center gap-1">
-          <i data-lucide="mail" class="w-3.5 h-3.5 text-brand-orange"></i>
-          <span>solutions@theboilerllc.com</span>
-        </a>
+        <div class="flex items-center gap-1.5 text-[#f97316]">
+          <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+          <span class="font-bold tracking-wide uppercase text-[10px]">24/7 Emergency Line</span>
+        </div>
       </div>
     </div>
 
     <!-- MAIN BAR HEAD NAVIGATION -->
-    <div id="main-fixed-header" class="w-full bg-brand-dark border-b border-slate-900/50 py-5 px-4 md:px-8 flex items-center justify-between sticky top-0 transition-all duration-300 z-40">
+    <div id="main-fixed-header" class="w-full bg-brand-dark border-b border-slate-900/50 py-4 px-4 md:px-8 flex items-center justify-between sticky top-0 transition-all duration-350 z-40">
       <!-- Logo Branding -->
-      <a href="index.html" class="flex items-center gap-3 group">
-        <div class="h-10 w-10 overflow-hidden rounded border border-slate-800 bg-[#0e1329] p-0.5 group-hover:border-brand-orange transition">
+      <a href="index.html" class="flex items-center gap-3 group shrink-0">
+        <div class="h-11 w-11 overflow-hidden rounded border border-slate-800 bg-[#0e1329] p-0.5 group-hover:border-[#f97316] transition shrink-0">
           <img src="./assets/images/website_logo.jpg" alt="The Boiler LLC Logo" class="h-full w-full object-cover">
         </div>
-        <div>
-          <span class="font-display font-black text-sm tracking-wider block text-white">THE BOILER LLC</span>
-          <span class="font-mono text-[9px] tracking-widest block text-brand-orange uppercase leading-none font-bold">ASME Code Alignments</span>
+        <div class="flex flex-col select-none leading-[1.1] text-left">
+          <span class="font-sans font-black text-xs tracking-wider text-white">THE BOILER</span>
+          <span class="font-sans font-black text-xs tracking-wider text-[#f97316]">LLC</span>
+          <span class="font-mono text-[7px] tracking-widest text-[#94a3b8] uppercase font-bold opacity-80 mt-1">ATLANTA MECHANICAL</span>
+          <span class="font-mono text-[7px] tracking-widest text-[#94a3b8] uppercase font-bold opacity-80">ENGINEERING</span>
         </div>
       </a>
 
       <!-- Desktop Links Menu -->
-      <nav class="hidden lg:flex items-center gap-8 font-display text-xs uppercase tracking-widest font-semibold flex-shrink-0">
-        <a href="index.html" class="nav-link text-slate-200 hover:text-white transition">Home</a>
-        <a href="about.html" class="nav-link text-slate-200 hover:text-white transition">About Us</a>
-        <a href="services.html" class="nav-link text-slate-200 hover:text-white transition">Services</a>
-        <a href="projects.html" class="nav-link text-slate-200 hover:text-white transition">Projects</a>
-        <a href="industries.html" class="nav-link text-slate-200 hover:text-white transition">Industries</a>
-        <a href="blog-news.html" class="nav-link text-slate-200 hover:text-white transition">Newsroom</a>
-        <a href="contact.html" class="nav-link text-slate-200 hover:text-white transition">Contact</a>
+      <nav class="hidden lg:flex items-center gap-x-5 xl:gap-x-7 font-display text-[10.5px] uppercase tracking-widest font-black shrink-0 text-slate-300">
+        <a href="index.html" class="nav-link py-2 relative transition duration-300 hover:text-white hover:text-[#f97316]">HOME</a>
+        <a href="about.html" class="nav-link py-2 relative transition duration-300 hover:text-white hover:text-[#f97316]">ABOUT US</a>
+        <a href="services.html" class="nav-link py-2 relative transition duration-300 hover:text-white hover:text-[#f97316]">SERVICES</a>
+        <a href="projects.html" class="nav-link py-2 relative transition duration-300 hover:text-white hover:text-[#f97316]">PROJECTS</a>
+        <a href="industries.html" class="nav-link py-2 relative transition duration-300 text-[#f97316] border-b-2 border-[#f97316] pb-1 font-black">INDUSTRIES</a>
+        <a href="blog-news.html" class="nav-link py-2 relative transition duration-300 hover:text-white hover:text-[#f97316]">BLOG & NEWS</a>
+        <a href="contact.html" class="nav-link py-2 relative transition duration-300 hover:text-white hover:text-[#f97316]">CONTACT US</a>
+        <a href="client-portal.html" class="nav-link py-2 relative transition duration-300 hover:text-white">CLIENT PORTAL</a>
       </nav>
 
-      <!-- CTA and Hamburger buttons -->
-      <div class="flex items-center gap-4">
-        <button onclick="openModal()" class="hidden sm:inline-block px-5 py-2.5 bg-brand-orange hover:bg-brand-orange/90 text-brand-dark font-display font-extrabold text-[10px] tracking-widest rounded uppercase transition shadow-md shadow-brand-orange/10 transform active:scale-95">
-          Request Estimate Wizard
+      <!-- CTA / Lock Block from screenshot -->
+      <div class="flex items-center gap-3">
+        <!-- Client Portal Lock Button -->
+        <a href="client-portal.html" class="hidden xl:flex items-center gap-1.5 border border-slate-800 bg-[#070913] hover:bg-slate-900 transition px-3.5 py-2.5 rounded font-display font-extrabold text-[10px] tracking-widest uppercase text-white shadow-sm shrink-0">
+          <i data-lucide="lock" class="w-3.5 h-3.5 text-[#f97316] stroke-[2.5]"></i>
+          <span>CLIENT PORTAL</span>
+        </a>
+        <button onclick="openModal()" class="hidden sm:inline-block px-5 py-2.5 bg-[#f97316] hover:bg-[#ea580c] text-white font-display font-black text-[10px] tracking-widest rounded-md uppercase transition shadow-md shadow-brand-orange/20 transform active:scale-95 shrink-0">
+          REQUEST A QUOTE
         </button>
-        <button id="mobile-menu-open-btn" class="lg:hidden h-10 w-10 border border-slate-800 rounded flex items-center justify-center text-slate-300 hover:text-white transition" aria-label="Toggle Navigation Panel">
+        <button id="mobile-menu-open-btn" class="lg:hidden h-10 w-10 border border-slate-800 rounded flex items-center justify-center text-slate-300 hover:text-white transition bg-brand-dark" aria-label="Toggle Navigation Panel">
           <i data-lucide="menu" class="w-5 h-5"></i>
         </button>
       </div>
@@ -120,16 +137,17 @@
         <a href="projects.html" class="hover:text-brand-orange transition py-1 text-slate-300">Projects</a>
         <a href="industries.html" class="hover:text-brand-orange transition py-1 text-slate-300">Industries</a>
         <a href="blog-news.html" class="hover:text-brand-orange transition py-1 text-slate-300">Newsroom</a>
-        <a href="contact.html" class="hover:text-brand-orange transition py-1 text-slate-300 font-bold">Contact Us</a>
+        <a href="contact.html" class="hover:text-brand-orange transition py-1 text-slate-300">Contact Us</a>
+        <a href="client-portal.html" class="hover:text-brand-orange transition py-1 text-slate-300">Client Portal</a>
       </nav>
     </div>
     <div class="space-y-4">
       <button onclick="openModal()" class="w-full h-12 bg-brand-orange hover:bg-brand-orange/90 text-brand-dark font-display font-black text-xs tracking-widest rounded uppercase transition flex items-center justify-center gap-2">
-        ESTIMATE WIZARD <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        REQUEST A QUOTE <i data-lucide="arrow-right" class="w-4 h-4"></i>
       </button>
       <div class="text-center">
-        <a href="tel:+14047401850" class="text-xs font-mono text-brand-gray hover:text-white transition">
-          📞 LOCAL DISPATCH DESK: +1 (404) 740-1850
+        <a href="tel:+14045550192" class="text-xs font-mono text-brand-gray hover:text-white transition">
+          📞 LOCAL DISPATCH DESK: +1 (404) 555-0192
         </a>
       </div>
     </div>
@@ -359,7 +377,7 @@
           </div>
           <div class="flex items-center gap-2">
             <i data-lucide="phone" class="w-4 h-4 text-brand-orange"></i>
-            <a href="tel:+14047401850" class="hover:text-white transition font-bold">+1 (404) 740-1850 (Local Dispatch)</a>
+            <a href="tel:+14045550192" class="hover:text-white transition font-bold">+1 (404) 555-0192 (Local Dispatch)</a>
           </div>
           <div class="flex items-center gap-2">
             <i data-lucide="mail" class="w-4 h-4 text-brand-orange"></i>
@@ -577,7 +595,7 @@
             </div>
             <div>
               <label class="block text-[10px] font-bold text-slate-300 uppercase mb-1">Contact Telephone *</label>
-              <input type="tel" name="phone" placeholder="+1 (404) 740-1850" class="w-full bg-brand-dark border border-slate-800 rounded px-3 py-1.5 text-white focus:outline-none focus:border-brand-orange">
+              <input type="tel" name="phone" placeholder="+1 (404) 555-0192" class="w-full bg-brand-dark border border-slate-800 rounded px-3 py-1.5 text-white focus:outline-none focus:border-brand-orange">
               <p class="text-[9px] text-red-400 mt-0.5 error-feedback" id="err-q-phone"></p>
             </div>
           </div>
