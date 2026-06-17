@@ -1,0 +1,204 @@
+/*
+========================================================================
+THE BOILER LLC - STANDARD EXCELLENCE PRODUCTION STYLESHEET (OFFLINE SECURE CORE)
+========================================================================
+This stylesheet contains manual overrides, custom mechanical grids, radial ambient glows,
+scrolling behavior, custom scrollbars, component animations, and modal overlays
+that complement the Tailwind CSS framework.
+*/
+
+/* 1. INITIAL CUSTOM FONTS & BASE SELECTIONS */
+:root {
+  --color-brand-dark: #070913;
+  --color-brand-navy: #0e1329;
+  --color-brand-card: #151c3a;
+  --color-brand-orange: #f97316;
+  --color-brand-yellow: #eab308;
+  --color-brand-gray: #94a3b8;
+  --color-brand-light: #f8fafc;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-brand-dark);
+  color: var(--color-brand-light);
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--color-brand-dark);
+  color: var(--color-brand-light);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: col;
+}
+
+main {
+  flex-grow: 1;
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-brand-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-orange);
+}
+
+::selection {
+  background-color: var(--color-brand-orange);
+  color: var(--color-brand-dark);
+}
+
+/* 2. CUSTOM MECHANICAL BLUEPRINT GRIDS & BACKGROUNDS */
+.blueprint-overlay {
+  background-image: 
+    radial-gradient(ellipse at 50% 50%, rgba(249, 115, 22, 0.12) 0%, transparent 75%),
+    linear-gradient(rgba(21, 28, 58, 0.5) 1px, transparent 1px), 
+    linear-gradient(90deg, rgba(21, 28, 58, 0.5) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+}
+
+/* 3. PREMIUM DECORATIVE RADIAL GRADIENTS */
+.radial-gradient-glow {
+  background-image: radial-gradient(circle at bottom, rgba(249, 115, 22, 0.06), transparent 60%);
+}
+
+.radial-amber-aura {
+  background-image: radial-gradient(ellipse at 50% 50%, rgba(249, 115, 22, 0.1) 0%, transparent 80%);
+}
+
+/* 4. KEYFRAME ANIMATIONS (EMULATING FRAMER MOTION) */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes pulseBorder {
+  0%, 100% { border-color: rgba(249, 115, 22, 0.3); }
+  50% { border-color: rgba(249, 115, 22, 0.8); }
+}
+
+/* Styling Classes for Animations */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale-in {
+  animation: fadeInScale 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.border-pulse {
+  animation: pulseBorder 3s infinite;
+}
+
+/* 5. INTERACTIVE QUOTE PROPOSAL MODAL STYLES */
+#quote-modal {
+  display: none; /* Controlled via script.js */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#quote-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+#quote-modal-container {
+  transform: scale(0.95) translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#quote-modal.active #quote-modal-container {
+  transform: scale(1) translateY(0);
+}
+
+/* 6. STATIC TOPO NAVIGATION LINK INDICATORS */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 2px;
+  background-color: var(--color-brand-orange);
+  transform: scaleX(0);
+  transition: transform 0.2s ease-out;
+}
+
+.nav-link.active::after,
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Class-based transitions */
+.transition-all-300 {
+  transition: all 0.3s ease;
+}
+
+/* Accordion slide-in content override */
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-content.open {
+  max-height: 1000px;
+}
+
+.faq-icon {
+  transition: transform 0.2s ease;
+}
+
+.faq-icon.rotated {
+  transform: rotate(180deg);
+}
+
+/* Utility layout helpers for absolute overlays */
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

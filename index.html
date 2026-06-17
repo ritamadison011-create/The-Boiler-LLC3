@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Boiler LLC | Industrial Thermal Engineering & ASME Welds</title>
+  
+  <!-- Preconnect and Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#070913',
+              navy: '#0e1329',
+              card: '#151c3a',
+              orange: '#f97316',
+              yellow: '#eab308',
+              gray: '#94a3b8',
+              light: '#f8fafc',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Custom Style Rules Overrides -->
+  <link rel="stylesheet" href="./styles.css">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-brand-dark text-slate-100 font-sans flex flex-col min-h-screen">
+
+  <!-- 1. ANNOUNCEMENT & UTILITY HEADER BLOCK -->
+  <header>
+    <div class="w-full bg-[#04060d] border-b border-slate-950/80 py-2.5 px-4 md:px-8 text-center text-[10px] sm:text-xs font-mono tracking-wider flex flex-col sm:flex-row justify-between items-center gap-2 relative z-50">
+      <div class="flex items-center gap-1.5 text-slate-400">
+        <span class="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>STANDBY DISPATCH STATUS: <span class="font-bold text-slate-200">ACTIVE REGULATORY WATCH</span></span>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-4 text-slate-300">
+        <a href="tel:+14047401850" class="hover:text-brand-orange transition flex items-center gap-1">
+          <i data-lucide="phone" class="w-3.5 h-3.5 text-brand-orange"></i>
+          <span>+1 (404) 740-1850</span>
+        </a>
+        <span class="text-slate-700">|</span>
+        <a href="mailto:solutions@theboilerllc.com" class="hover:text-brand-orange transition flex items-center gap-1">
+          <i data-lucide="mail" class="w-3.5 h-3.5 text-brand-orange"></i>
+          <span>solutions@theboilerllc.com</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- MAIN BAR HEAD NAVIGATION -->
+    <div id="main-fixed-header" class="w-full bg-brand-dark border-b border-slate-900/50 py-5 px-4 md:px-8 flex items-center justify-between sticky top-0 transition-all duration-300 z-40">
+      <!-- Logo Branding -->
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="h-10 w-10 overflow-hidden rounded border border-slate-800 bg-[#0e1329] p-0.5 group-hover:border-brand-orange transition">
+          <img src="./assets/images/website_logo.jpg" alt="The Boiler LLC Logo" class="h-full w-full object-cover">
+        </div>
+        <div>
+          <span class="font-display font-black text-sm tracking-wider block text-white">THE BOILER LLC</span>
+          <span class="font-mono text-[9px] tracking-widest block text-brand-orange uppercase leading-none font-bold">ASME Code Alignments</span>
+        </div>
+      </a>
+
+      <!-- Desktop Links Menu -->
+      <nav class="hidden lg:flex items-center gap-8 font-display text-xs uppercase tracking-widest font-semibold">
+        <a href="index.html" class="nav-link text-slate-200 hover:text-white transition">Home</a>
+        <a href="about.html" class="nav-link text-slate-200 hover:text-white transition">About Us</a>
+        <a href="services.html" class="nav-link text-slate-200 hover:text-white transition">Services</a>
+        <a href="projects.html" class="nav-link text-slate-200 hover:text-white transition">Projects</a>
+        <a href="industries.html" class="nav-link text-slate-200 hover:text-white transition">Industries</a>
+        <a href="blog-news.html" class="nav-link text-slate-200 hover:text-white transition">Newsroom</a>
+        <a href="contact.html" class="nav-link text-slate-200 hover:text-white transition">Contact</a>
+      </nav>
+
+      <!-- CTA and Hamburger buttons -->
+      <div class="flex items-center gap-4">
+        <button onclick="openModal()" class="hidden sm:inline-block px-5 py-2.5 bg-brand-orange hover:bg-brand-orange/90 text-brand-dark font-display font-extrabold text-[10px] tracking-widest rounded uppercase transition shadow-md shadow-brand-orange/10 transform active:scale-95">
+          Request Estimate Wizard
+        </button>
+        <button id="mobile-menu-open-btn" class="lg:hidden h-10 w-10 border border-slate-800 rounded flex items-center justify-center text-slate-300 hover:text-white transition" aria-label="Toggle Navigation Panel">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div id="mobile-menu-drawer" class="fixed inset-0 bg-brand-dark/98 z-50 flex-col justify-between p-6 pointer-events-none hidden transition-all duration-300">
+    <div class="space-y-8">
+      <div class="flex items-center justify-between border-b border-slate-900 pb-4">
+        <div class="flex items-center gap-2">
+          <img src="./assets/images/website_logo.jpg" alt="Logo" class="h-8 w-8 rounded object-cover">
+          <span class="font-display font-black text-xs text-white uppercase tracking-wider">THE BOILER LLC NAVIGATION</span>
+        </div>
+        <button id="mobile-menu-close-btn" class="h-9 w-9 border border-slate-800 rounded flex items-center justify-center text-brand-gray hover:text-white" aria-label="Close Navigation Drawer">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <nav class="flex flex-col gap-5 font-display text-base font-black tracking-widest uppercase">
+        <a href="index.html" class="hover:text-brand-orange transition py-1 text-white border-b border-slate-900">Home</a>
+        <a href="about.html" class="hover:text-brand-orange transition py-1 text-slate-300">About Us</a>
+        <a href="services.html" class="hover:text-brand-orange transition py-1 text-slate-300">Services</a>
+        <a href="projects.html" class="hover:text-brand-orange transition py-1 text-slate-300">Projects</a>
+        <a href="industries.html" class="hover:text-brand-orange transition py-1 text-slate-300">Industries</a>
+        <a href="blog-news.html" class="hover:text-brand-orange transition py-1 text-slate-300">Newsroom</a>
+        <a href="contact.html" class="hover:text-brand-orange transition py-1 text-slate-300 font-bold">Contact Us</a>
+      </nav>
+    </div>
+    <div class="space-y-4">
+      <button onclick="openModal()" class="w-full h-12 bg-brand-orange hover:bg-brand-orange/90 text-brand-dark font-display font-black text-xs tracking-widest rounded uppercase transition flex items-center justify-center gap-2">
+        ESTIMATE WIZARD <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </button>
+      <div class="text-center">
+        <a href="tel:+14047401850" class="text-xs font-mono text-brand-gray hover:text-white transition">
+          📞 LOCAL DISPATCH DESK: +1 (404) 740-1850
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- 2. MAIN HERO SECTION -->
+    <section class="relative bg-brand-dark py-20 lg:py-32 overflow-hidden border-b border-slate-900 blueprint-overlay">
+      <div class="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+        
+        <!-- Left Hero Content -->
+        <div class="lg:col-span-7 space-y-6 text-left">
+          <span class="inline-block bg-brand-orange/10 border border-brand-orange/20 text-brand-orange px-3 py-1 rounded font-mono text-[10px] uppercase tracking-widest font-black">
+            ASME REGISTERED WELDING MANUFACTURER
+          </span>
+          <h1 class="font-display font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase tracking-wider text-white leading-none">
+            THERMODYNAMIC ALIGNMENT & STRUCTURAL ENGINEERING
+          </h1>
+          <div class="h-1.5 w-24 bg-brand-orange rounded" id="hero-line-accent"></div>
+          <p class="text-slate-300 text-sm md:text-base max-w-xl leading-relaxed">
+            Authorized industrial workshops conducting R-Stamp pressure vessel welding and preventative water wash-outs across Georgia. Engineered for zero outage friction.
+          </p>
+          <div class="pt-4 flex flex-wrap gap-4 font-mono text-xs">
+            <button onclick="openModal()" class="px-8 py-3.5 bg-brand-orange hover:bg-brand-orange/90 text-brand-dark font-display font-black tracking-widest rounded uppercase transition shadow-lg shadow-brand-orange/20 transform active:scale-95 flex items-center gap-2">
+              ESTIMATE PROPOSAL <i data-lucide="sliders" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+            </button>
+            <a href="contact.html" class="px-8 py-3.5 bg-brand-navy border border-slate-800 text-white hover:border-slate-700 hover:text-brand-orange rounded tracking-widest uppercase transition flex items-center gap-2">
+              DISPATCH OFFICE <i data-lucide="phone-call" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Hero Visual Panel (Interactive Gauge Widget) -->
+        <div class="lg:col-span-5 flex justify-center lg:justify-end">
+          <div class="w-full max-w-md bg-[#0a0d21] border border-slate-800 rounded-lg p-6 relative shadow-2xl relative overflow-hidden group border-pulse">
+            <!-- Decorative grids -->
+            <div class="absolute inset-0 opacity-10 pointer-events-none select-none" style="background-image: radial-gradient(rgba(249,115,22,0.1), transparent 80%), linear-gradient(rgba(249,115,22,0.05) 1px, transparent 1px); background-size: 100% 100%, 20px 20px;"></div>
+            
+            <div class="flex items-center justify-between border-b border-slate-900 pb-3 mb-5">
+              <span class="font-mono text-[9px] text-[#475569] uppercase tracking-wider">GEORGIA GRID CONTROLLERS</span>
+              <div class="flex items-center gap-1.5 bg-brand-dark/90 px-2 py-0.5 rounded border border-slate-850">
+                <span class="h-1.5 w-1.5 rounded-full bg-brand-orange animate-pulse" id="live-gauge-connected-led"></span>
+                <span class="font-mono text-[8px] text-brand-orange font-bold uppercase tracking-widest">LIVE_SYS_CONN</span>
+              </div>
+            </div>
+
+            <!-- Heavy Mechanical Illustration -->
+            <div class="border border-slate-850 rounded-lg overflow-hidden h-44 relative bg-[#05070e] mb-5 shadow-inner">
+              <img src="./assets/images/hero_boiler_illustration.jpg" alt="Industrial Steam Boiler Core" class="w-full h-full object-cover opacity-60 group-hover:opacity-85 transition duration-300">
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/95 via-transparent to-transparent opacity-80"></div>
+              <span class="absolute bottom-2.5 left-3 font-mono text-[8.5px] text-slate-400 uppercase tracking-widest">
+                BOILER BLOCK SCHEMATIC DIAGRAM
+              </span>
+            </div>
+
+            <!-- Dynamic Gauge Outputs -->
+            <div class="grid grid-cols-2 gap-4 text-left border-t border-slate-900/60 pt-4">
+              <div>
+                <span class="font-mono text-[9px] text-slate-500 uppercase tracking-wider block">MAIN PROCESS PRESS</span>
+                <div class="flex items-baseline gap-1 mt-1">
+                  <span class="font-mono font-black text-2xl text-slate-100" id="live-gauge-psi-value">428.5</span>
+                  <span class="font-mono text-[10px] text-brand-orange font-bold font-semibold">PSI</span>
+                </div>
+              </div>
+              <div>
+                <span class="font-mono text-[9px] text-slate-500 uppercase tracking-wider block">SUPER-HEAT TEMP</span>
+                <div class="flex items-baseline gap-1 mt-1">
+                  <span class="font-mono font-black text-2xl text-slate-100">440.0</span>
+                  <span class="font-mono text-[10px] text-brand-orange font-bold">°F</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-5 bg-brand-dark/80 rounded border border-slate-850/80 p-3 flex items-start gap-2.5">
+              <i data-lucide="shield-alert" class="text-brand-orange flex-shrink-0 w-4 h-4 mt-0.5"></i>
+              <div class="font-mono text-[10px] text-slate-400 uppercase leading-relaxed text-left">
+                AUTHORIZED REPAIR SYSTEM OPERATING SAFELY WITHIN CODE STANDARDS REGULATION.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. TRUSTED CREDENTIALS CARDS -->
+    <section class="py-16 bg-[#04060d] border-b border-slate-900">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <h3 class="font-mono text-[10px] text-brand-gray uppercase tracking-widest text-center block mb-8 font-black">
+          INDUSTRIAL ALIGNMENT CERTIFICATE STATEMENTS
+        </h3>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 font-mono text-center">
+          <div class="bg-brand-dark border border-slate-850/75 p-5 rounded hover:border-slate-700 transition">
+            <span class="block text-brand-orange font-black text-xl lg:text-2xl">R-STAMP</span>
+            <p class="text-[9px] text-slate-400 mt-1 uppercase tracking-wide">Vessel Code Repairs (NBBI)</p>
+          </div>
+          <div class="bg-brand-dark border border-slate-850/75 p-5 rounded hover:border-slate-700 transition">
+            <span class="block text-brand-orange font-black text-xl lg:text-2xl">S-STAMP</span>
+            <p class="text-[9px] text-slate-400 mt-1 uppercase tracking-wide">Power Boilers Assembly</p>
+          </div>
+          <div class="bg-brand-dark border border-slate-850/75 p-5 rounded hover:border-slate-700 transition">
+            <span class="block text-brand-orange font-black text-xl lg:text-2xl">PE COGNIZANCE</span>
+            <p class="text-[9px] text-slate-400 mt-1 uppercase tracking-wide">Stamped Engineering Review</p>
+          </div>
+          <div class="bg-brand-dark border border-slate-850/75 p-5 rounded hover:border-slate-700 transition">
+            <span class="block text-brand-orange font-black text-xl lg:text-2xl">100% SECURE</span>
+            <p class="text-[9px] text-slate-400 mt-1 uppercase tracking-wide">OSHA Safety Compliance</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. CORE SERVICES GRID BRIEF -->
+    <section class="py-20 bg-[#070913] border-b border-slate-900">
+      <div class="max-w-7xl mx-auto px-4 md:px-8 space-y-12">
+        <div class="text-left space-y-3">
+          <span class="font-mono text-xs uppercase text-brand-orange tracking-widest font-bold block">
+            CORE PRACTICE DIVISIONS
+          </span>
+          <h2 class="font-display font-black text-3xl uppercase tracking-wider text-white">
+            CERTIFIED BOILER SERVICE REMEDIATIONS
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Install -->
+          <div class="bg-[#0b0e22] border border-slate-800 rounded p-6 flex flex-col justify-between hover:border-brand-orange/45 transition">
+            <div class="space-y-4 text-left">
+              <i data-lucide="plus-circle" class="w-8 h-8 text-brand-orange"></i>
+              <h4 class="font-display font-black text-base text-slate-100 uppercase tracking-wider">Boiler Installation</h4>
+              <p class="text-xs text-brand-gray leading-relaxed font-sans">
+                Professional erections of heavy industrial water-tube and fire-tube architectures matching ASME regulatory benchmarks.
+              </p>
+            </div>
+            <a href="services.html" class="font-mono text-[10px] text-brand-orange uppercase font-bold tracking-widest inline-block mt-6 hover:underline">
+              REVEAL SPECIFICATIONS »
+            </a>
+          </div>
+
+          <!-- Repair -->
+          <div class="bg-[#0b0e22] border border-slate-800 rounded p-6 flex flex-col justify-between hover:border-brand-orange/45 transition">
+            <div class="space-y-4 text-left">
+              <i data-lucide="shield-check" class="w-8 h-8 text-brand-orange"></i>
+              <h4 class="font-display font-black text-base text-slate-100 uppercase tracking-wider">Code Welding & R-Stamp</h4>
+              <p class="text-xs text-brand-gray leading-relaxed font-sans">
+                Authorized National Board "R" Stamp pressure welding, tube re-lining, and core structural steel repairs.
+              </p>
+            </div>
+            <a href="services.html" class="font-mono text-[10px] text-brand-orange uppercase font-bold tracking-widest inline-block mt-6 hover:underline">
+              REVEAL SPECIFICATIONS »
+            </a>
+          </div>
+
+          <!-- Washout -->
+          <div class="bg-[#0b0e22] border border-slate-800 rounded p-6 flex flex-col justify-between hover:border-brand-orange/45 transition">
+            <div class="space-y-4 text-left">
+              <i data-lucide="droplet" class="w-8 h-8 text-brand-orange"></i>
+              <h4 class="font-display font-black text-base text-slate-100 uppercase tracking-wider">Vessel Wash-Offs</h4>
+              <p class="text-xs text-brand-gray leading-relaxed font-sans">
+                Dissolving calcification scale, washing drums, flushing line tubes, restoring high heat transfer coefficients.
+              </p>
+            </div>
+            <a href="services.html" class="font-mono text-[10px] text-brand-orange uppercase font-bold tracking-widest inline-block mt-6 hover:underline">
+              REVEAL SPECIFICATIONS »
+            </a>
+          </div>
+        </div>
+
+        <div class="text-center pt-4">
+          <a href="services.html" class="px-8 py-3 bg-brand-navy border border-slate-800 hover:border-brand-orange/60 text-white font-mono font-bold text-xs tracking-widest rounded uppercase transition inline-block">
+            EXPLORE COMPLETE INDUSTRIAL DIRECTORY
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. JAVARIUS GAY STALWART SECTION -->
+    <section class="py-20 bg-[#090c1a] border-b border-slate-900 relative">
+      <div class="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+        <!-- Lead Portrait frame -->
+        <div class="lg:col-span-5 relative flex justify-center">
+          <div class="border border-slate-800 rounded-lg overflow-hidden h-80 w-full max-w-sm relative group bg-brand-dark p-1">
+            <img src="./assets/images/about_boiler_illustration.jpg" alt="Industrial Boiler Mechanic Inspecting System" class="w-full h-full object-cover opacity-60 group-hover:opacity-85 transition duration-300 filter saturate-50 hover:saturate-100">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/95 via-transparent to-transparent opacity-80"></div>
+            <span class="absolute bottom-3 left-4 font-mono text-[9px] text-brand-orange bg-brand-dark/90 px-3 py-1 rounded border border-slate-800 uppercase tracking-widest font-black">
+              MANAGING DIRECTOR DIRECTIVE
+            </span>
+          </div>
+        </div>
+
+        <!-- Director Narrative block -->
+        <div class="lg:col-span-7 space-y-6 text-left">
+          <span class="font-mono text-xs uppercase text-brand-orange tracking-widest font-bold block">
+            THE BOILER LLC LEADERSHIP
+          </span>
+          <h2 class="font-display font-black text-3xl md:text-4xl uppercase tracking-wider text-white">
+            COMMANDED BY DIRECTIVE MASTER JAVARIUS GAY
+          </h2>
+          <div class="h-1 w-20 bg-brand-orange rounded"></div>
+          <p class="text-brand-gray text-xs sm:text-sm font-sans leading-relaxed font-normal">
+            For decades, Javarius Gay has coordinated engineering teams, passed tricky state pressure cell examinations, and welded critical vessel walls under strict NBBI regulations. The Boiler LLC remains committed to prompt dispatch response, absolute compliance tracking, and zero unplanned plant downtime.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono text-xs pt-2">
+            <div class="flex items-center gap-3">
+              <i data-lucide="award" class="text-brand-orange flex-shrink-0"></i>
+              <span class="text-slate-200">National Board Certified Welder</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i data-lucide="shield-check" class="text-brand-orange flex-shrink-0"></i>
+              <span class="text-slate-200">ASME Code Compliance Auditor</span>
+            </div>
+          </div>
+          <div class="pt-2">
+            <a href="about.html" class="px-8 py-3 bg-brand-orange hover:bg-brand-orange/95 text-brand-dark font-display font-black text-xs tracking-widest rounded uppercase transition inline-block">
+              REVEAL CORPORATE MISSION
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. FAQ ACCORDION SECTION -->
+    <section class="py-20 bg-[#070913] border-b border-slate-900">
+      <div class="max-w-4xl mx-auto px-4 md:px-8 space-y-12">
+        <div class="text-center space-y-3">
+          <span class="font-mono text-xs uppercase text-brand-orange tracking-widest font-bold block pb-1">
+            FAQ REGISTRY SEARCH
+          </span>
+          <h2 class="font-display font-black text-3xl uppercase tracking-wider text-white">
+            MECHANICAL SYSTEMS QUESTIONS
+          </h2>
+        </div>
+
+        <div class="space-y-4 font-sans text-xs">
+          <!-- Item 1 -->
+          <div class="bg-[#0b0e22] border border-slate-800 rounded faq-accordion-item">
+            <button class="w-full p-5 flex items-center justify-between text-left font-display font-bold text-sm uppercase text-white tracking-wide faq-toggle-btn">
+              <span>What classifications establish the ASME Section I versus Section IV criteria?</span>
+              <i data-lucide="chevron-down" class="text-brand-orange w-4 h-4 faq-icon"></i>
+            </button>
+            <div class="faq-content">
+              <div class="px-5 pb-5 pt-1 text-brand-gray leading-relaxed text-xs">
+                Sect I governs High-Pressure Power steam boilers operating beyond 15 PSI limits and hot water exceeding 160 PSI / 250°F. Section IV controls low-pressure heating boilers restricted safely below 15 PSI steam or 160 PSI hot water thresholds. Correct certification keeps insurance rates low and prevents safety failures.
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="bg-[#0b0e22] border border-slate-800 rounded faq-accordion-item">
+            <button class="w-full p-5 flex items-center justify-between text-left font-display font-bold text-sm uppercase text-white tracking-wide faq-toggle-btn">
+              <span>When does a boiler system require National Board R-Stamp certifications?</span>
+              <i data-lucide="chevron-down" class="text-brand-orange w-4 h-4 faq-icon"></i>
+            </button>
+            <div class="faq-content">
+              <div class="px-5 pb-5 pt-1 text-brand-gray leading-relaxed text-xs">
+                Once a boiler's main pressure boundary requires code-welding modifications (e.g. replacing cracked tube linings, structural patch plates, nozzle headers), only an authorized R-stamp holder certified under National Board NB-23 standards can perform the repair weld and record the Form R-1 document.
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="bg-[#0b0e22] border border-slate-800 rounded faq-accordion-item">
+            <button class="w-full p-5 flex items-center justify-between text-left font-display font-bold text-sm uppercase text-white tracking-wide faq-toggle-btn">
+              <span>How often should an industrial boiler system undergo local water wash-offs?</span>
+              <i data-lucide="chevron-down" class="text-brand-orange w-4 h-4 faq-icon"></i>
+            </button>
+            <div class="faq-content">
+              <div class="px-5 pb-5 pt-1 text-brand-gray leading-relaxed text-xs">
+                To prevent hard calcium silicate scale formation, standard industrial systems expect chemical and physical washout services at least once per fiscal year. In hard-water processes, outages may increase wash-offs to twice annually. De-scaling reduces overall fuel consumption by keeping heat transfer levels optimized.
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="bg-[#0b0e22] border border-slate-800 rounded faq-accordion-item">
+            <button class="w-full p-5 flex items-center justify-between text-left font-display font-bold text-sm uppercase text-white tracking-wide faq-toggle-btn">
+              <span>Do you provide active mechanical dispatch support in Atlanta, Georgia?</span>
+              <i data-lucide="chevron-down" class="text-brand-orange w-4 h-4 faq-icon"></i>
+            </button>
+            <div class="faq-content">
+              <div class="px-5 pb-5 pt-1 text-brand-gray leading-relaxed text-xs">
+                Yes. Our dispatch team offers responsive 24/7/365 emergency assistance for process piping leaks, safety valve blowdowns, feed water disruptions, or structural boiler failure. Our typical on-site deployment timeline within metropolitan Atlanta is under two hours.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 7. BOTTOM BANNER ACTION TRIGGER -->
+    <section class="py-20 bg-gradient-to-t from-[#070913] to-[#0a0d21] text-center border-b border-slate-900 overflow-hidden relative">
+      <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(circle, rgba(249,115,22,0.1), transparent 80%);"></div>
+      <div class="max-w-3xl mx-auto px-4 space-y-6 relative z-10">
+        <h2 class="font-display font-black text-2xl sm:text-3xl text-white uppercase tracking-wider">
+          ACQUIRE THE SECURE MECHANICAL SOLUTIONS PROPOSAL
+        </h2>
+        <p class="text-brand-gray text-xs sm:text-sm max-w-lg mx-auto leading-relaxed">
+          Need localized S-Stamp assemblies, preventative R-stamp certified welding welds, complete de-scaling washes, or ASME engineering blueprints?
+        </p>
+        <div class="pt-4 flex flex-wrap justify-center gap-4 font-mono text-xs">
+          <button onclick="openModal()" class="px-8 py-3.5 bg-brand-orange hover:bg-brand-orange/90 text-brand-dark font-display font-black tracking-widest rounded uppercase transition inline-block shadow-lg shadow-brand-orange/15">
+            INITIATE PROPOSAL WIZARD
+          </button>
+          <a href="contact.html" class="px-8 py-3.5 bg-brand-dark border border-slate-800 text-white hover:border-slate-700 rounded tracking-widest uppercase transition inline-block">
+            DIRECTLY CONTACT AUTHORIZED OFFICE
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 8. GLOBAL FOOTER BLOCK -->
+  <footer class="bg-brand-dark border-t border-slate-900 py-16 px-4 md:px-8 relative z-10 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+      
+      <!-- Logo brand and Address -->
+      <div class="lg:col-span-5 space-y-5">
+        <div class="flex items-center gap-3">
+          <img src="./assets/images/website_logo.jpg" alt="Logo" class="h-8 w-8 rounded object-cover">
+          <div>
+            <span class="font-display font-black text-sm tracking-widest text-slate-100">THE BOILER LLC</span>
+            <span class="font-mono text-[9px] tracking-wider text-brand-orange block uppercase font-bold">STATE REGULATED COMPLIANCE</span>
+          </div>
+        </div>
+        <p class="text-[11px] leading-relaxed text-brand-gray max-w-sm font-sans">
+          Authorized workshops supporting high-pressure boiler tube rolling, R-Stamp welding repair, ultrasound lining diagnostics, and steam engineering loops in Georgia.
+        </p>
+        <div class="space-y-2 font-mono text-[11px] text-slate-300">
+          <div class="flex items-start gap-2">
+            <i data-lucide="map-pin" class="w-4 h-4 text-brand-orange flex-shrink-0 mt-0.5"></i>
+            <div>
+              <span class="font-bold text-slate-200 block">The Boiler LLC</span>
+              2425 Piedmont Road NE, Atlanta, GA 30324
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="phone" class="w-4 h-4 text-brand-orange"></i>
+            <a href="tel:+14047401850" class="hover:text-white transition font-bold">+1 (404) 740-1850 (Local Dispatch)</a>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="mail" class="w-4 h-4 text-brand-orange"></i>
+            <a href="mailto:solutions@theboilerllc.com" class="hover:text-white transition">solutions@theboilerllc.com</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="lg:col-span-3 space-y-4 text-left">
+        <h4 class="font-display font-bold text-white uppercase tracking-wider text-xs border-l-2 border-brand-orange pl-3">
+          UTILITY INDEX
+        </h4>
+        <div class="grid grid-cols-2 gap-2 text-[11px] text-slate-400 font-mono">
+          <a href="index.html" class="hover:text-white transition">Home</a>
+          <a href="about.html" class="hover:text-white transition">About Us</a>
+          <a href="services.html" class="hover:text-white transition">Services</a>
+          <a href="projects.html" class="hover:text-white transition">Projects</a>
+          <a href="industries.html" class="hover:text-white transition">Industries</a>
+          <a href="blog-news.html" class="hover:text-white transition">Newsroom</a>
+          <a href="contact.html" class="hover:text-white transition col-span-2">Contact Us</a>
+        </div>
+      </div>
+
+      <!-- Newsletter subscription form -->
+      <div class="lg:col-span-4 space-y-4">
+        <h4 class="font-display font-bold text-white uppercase tracking-wider text-xs border-l-2 border-brand-orange pl-3">
+          GET REGULATORY BULLETINS
+        </h4>
+        <p class="text-[11px] leading-relaxed text-brand-gray font-sans">
+          Obtain preventative washout notifications, inspection guidelines, and periodic mechanical boiler code modifications.
+        </p>
+        <form class="footer-newsletter-form flex gap-2 relative">
+          <input type="email" placeholder="email@company.com" required class="w-full h-10 bg-brand-dark border border-slate-800 rounded px-3 text-[11px] text-white focus:outline-none focus:border-brand-orange font-mono placeholder:text-slate-600">
+          <button type="submit" class="h-10 w-11 bg-brand-orange text-brand-dark font-mono flex items-center justify-center rounded hover:bg-brand-orange/90 transition newsletter-submit-icon" aria-label="Subscribe to articles">
+            <i data-lucide="send" class="w-3.5 h-3.5"></i>
+          </button>
+        </form>
+        <span class="newsletter-success text-[10px] text-emerald-400 font-semibold uppercase tracking-wider block hidden">✓ Welcome to the secure transmission pipeline.</span>
+      </div>
+
+    </div>
+
+    <!-- Copyright bar -->
+    <div class="max-w-7xl mx-auto border-t border-slate-900 mt-12 pt-8 text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] filter saturate-50 select-none">
+      <div class="space-y-0.5">
+        <p class="font-mono text-slate-500 uppercase">
+          © 2026 THE BOILER LLC. CODES REGISTER DIVISION REGISTRY. ALL RIGHTS RESERVED.
+        </p>
+        <p class="text-[9px] text-slate-600 font-mono">
+          STALWALT DIRECTION: JAVARIUS GAY | DISPATCH OFFICE GA-SECURE-30324
+        </p>
+      </div>
+      <div class="flex items-center gap-4 font-mono text-slate-500">
+        <span>ISO_9001_COMPLIANT</span>
+        <span>•</span>
+        <span>R-STAMP_WELDERS_ASME</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- 9. MULTI-STEP PROPOSAL WIZARD MODAL WRAPPER -->
+  <div id="quote-modal" class="fixed inset-0 z-50 flex items-center justify-center pointer-events-none p-4" aria-modal="true" role="dialog">
+    <!-- Backdrop blur shadow -->
+    <div id="quote-modal-backdrop" class="absolute inset-0 bg-brand-dark/80 backdrop-blur-sm pointer-events-auto cursor-pointer"></div>
+    
+    <!-- Modal container block -->
+    <div id="quote-modal-container" class="bg-brand-dark border border-slate-800 rounded-lg max-w-xl w-full p-6 relative pointer-events-auto shadow-2xl overflow-y-auto max-h-[90vh]">
+      
+      <!-- Close button on top-right -->
+      <button id="quote-modal-close-btn" class="absolute top-4 right-4 h-8 w-8 rounded border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white transition" aria-label="Close Proposal Dialog">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <!-- Head Title -->
+      <div class="space-y-1 mb-6 border-b border-slate-900 pb-3">
+        <h3 class="font-display font-black text-xl text-white uppercase tracking-wider">PREV-ALIGNMENT PROPOSAL GENERATOR</h3>
+        <p class="text-[10px] font-mono text-brand-orange uppercase tracking-wider font-semibold">THE BOILER LLC SECURE CALIBRATION PIPELINE</p>
+      </div>
+
+      <!-- Progressive Header Indicators -->
+      <div id="quote-wizard-progress-header" class="grid grid-cols-3 gap-2 py-2 mb-6 border-b border-slate-900 font-mono text-[9px] uppercase font-bold text-center">
+        <div class="flex items-center gap-2" id="label-step-1">
+          <span id="indicator-step-1" class="h-5 w-5 rounded-full flex items-center justify-center text-[10px] bg-brand-orange text-brand-dark font-bold">1</span>
+          <span>SYSTEMS</span>
+        </div>
+        <div class="flex items-center gap-2" id="label-step-2">
+          <span id="indicator-step-2" class="h-5 w-5 rounded-full flex items-center justify-center text-[10px] bg-slate-800 text-brand-gray">2</span>
+          <span>PARAMETERS</span>
+        </div>
+        <div class="flex items-center gap-2" id="label-step-3">
+          <span id="indicator-step-3" class="h-5 w-5 rounded-full flex items-center justify-center text-[10px] bg-slate-800 text-brand-gray">3</span>
+          <span>OFFICE DETAILS</span>
+        </div>
+      </div>
+
+      <!-- STEP 1 CONTAINER: Boiler Type Capacity Selections -->
+      <div id="wizard-step-1" class="space-y-4">
+        <!-- System Option -->
+        <div class="space-y-2">
+          <label class="block font-mono text-[10px] font-bold text-slate-300 uppercase tracking-wider text-left">1. Select Mechanical System Class</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-left">
+            <button data-value="Steam Generation" class="system-grid-option flex items-center justify-between px-4 py-2.5 rounded border text-left text-sm transition-all duration-200 border-brand-orange bg-brand-orange/10 text-white font-semibold">
+              <span class="font-display text-xs font-bold uppercase transition">Steam Generation Boilers</span>
+              <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange check-indicator"></i>
+            </button>
+            <button data-value="Hydronic / hot-water" class="system-grid-option flex items-center justify-between px-4 py-2.5 rounded border text-left text-sm transition-all duration-200 border-slate-800 bg-[#0e1329] text-brand-gray hover:border-slate-700/80 hover:text-white">
+              <span class="font-display text-xs font-bold uppercase transition">Hydronic / Hot-Water Boilers</span>
+              <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange check-indicator" style="display: none;"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Service Option -->
+        <div class="space-y-2">
+          <label class="block font-mono text-[10px] font-bold text-slate-300 uppercase tracking-wider text-left">2. Select Service Required</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-left">
+            <button data-value="New System Installation" class="service-grid-option flex items-center justify-between px-4 py-2.5 rounded border text-left text-sm transition-all duration-200 border-brand-orange bg-brand-orange/10 text-white font-semibold">
+              <span class="font-display text-xs font-bold uppercase transition">New System Installation</span>
+              <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange check-indicator service-indicator"></i>
+            </button>
+            <button data-value="R-Stamp Code repairs" class="service-grid-option flex items-center justify-between px-4 py-2.5 rounded border text-left text-sm transition-all duration-200 border-slate-800 bg-[#0e1329] text-brand-gray hover:border-slate-700/80 hover:text-white">
+              <span class="font-display text-xs font-bold uppercase transition">R-Stamp Code Repairs</span>
+              <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange check-indicator service-indicator" style="display: none;"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- HP Output capacity grid -->
+        <div class="space-y-2">
+          <label class="block font-mono text-[10px] font-bold text-slate-300 uppercase tracking-wider text-left">3. Operating System Capacity HP</label>
+          <div class="grid grid-cols-3 gap-2">
+            <button data-value="15 - 100 HP" class="capacity-grid-option flex flex-col items-center justify-center p-3 rounded border text-center transition-all border-slate-800 bg-[#0e1329] text-brand-gray hover:border-slate-700">
+              <span class="font-display font-extrabold text-sm text-white">15-100</span>
+              <span class="font-mono text-[8px] uppercase tracking-widest text-[#475569] mt-1 font-bold">Low HP Pack</span>
+            </button>
+            <button data-value="100 - 500 HP" class="capacity-grid-option flex flex-col items-center justify-center p-3 rounded border text-center transition-all border-brand-orange bg-brand-orange/10 text-white">
+              <span class="font-display font-extrabold text-sm text-white">100-500</span>
+              <span class="font-mono text-[8px] uppercase tracking-widest text-[#475569] mt-1 font-bold">Process HP</span>
+            </button>
+            <button data-value="500 - 1500+ HP" class="capacity-grid-option flex flex-col items-center justify-center p-3 rounded border text-center transition-all border-slate-800 bg-[#0e1329] text-brand-gray hover:border-slate-700">
+              <span class="font-display font-extrabold text-sm text-white">500-1500+</span>
+              <span class="font-mono text-[8px] uppercase tracking-widest text-[#475569] mt-1 font-bold">Heavy Utilities</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2 CONTAINER: Facility type & Urgency/Timeline -->
+      <div id="wizard-step-2" class="space-y-4" style="display: none;">
+        <!-- Facility Selections -->
+        <div class="space-y-2">
+          <label class="block font-mono text-[10px] font-bold text-slate-300 uppercase tracking-wider text-left">1. Select Facility/Building Category</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-left animate-fade-in">
+            <button data-value="Manufacturing Plant" class="facility-grid-option flex items-center justify-between px-4 py-2.5 rounded border text-left text-sm transition-all duration-200 border-brand-orange bg-brand-orange/10 text-white font-semibold">
+              <span class="font-display text-xs font-bold uppercase transition">Manufacturing Plant</span>
+              <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange check-indicator facility-indicator"></i>
+            </button>
+            <button data-value="Healthcare Wing" class="facility-grid-option flex items-center justify-between px-4 py-2.5 rounded border text-left text-sm transition-all duration-200 border-slate-800 bg-[#0e1329] text-brand-gray hover:border-slate-700/80 hover:text-white">
+              <span class="font-display text-xs font-bold uppercase transition">Healthcare / Hospital Wing</span>
+              <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange check-indicator facility-indicator" style="display: none;"></i>
+            </button>
+            <button data-value="Power Utility Grid" class="facility-grid-option flex items-center justify-between px-4 py-2.5 rounded border text-left text-sm transition-all duration-200 border-slate-800 bg-[#0e1329] text-brand-gray hover:border-slate-700/80 hover:text-white">
+              <span class="font-display text-xs font-bold uppercase transition">Power Utility Grid</span>
+              <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange check-indicator facility-indicator" style="display: none;"></i>
+            </button>
+            <button data-value="Commercial Office Block" class="facility-grid-option flex items-center justify-between px-4 py-2.5 rounded border text-left text-sm transition-all duration-200 border-slate-800 bg-[#0e1329] text-brand-gray hover:border-slate-700/80 hover:text-white">
+              <span class="font-display text-xs font-bold uppercase transition">Commercial Office Block</span>
+              <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange check-indicator facility-indicator" style="display: none;"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Timeline Selections -->
+        <div class="space-y-2">
+          <label class="block font-mono text-[10px] font-bold text-slate-300 uppercase tracking-wider text-left">2. Targeted Completion Duration</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-left">
+            <button data-value="Immediate Dispatch Emergency" class="timeline-grid-option flex items-center justify-between px-4 py-3 rounded border text-left text-sm transition-all duration-200 border-slate-800 bg-[#0e1329] text-brand-gray hover:border-slate-700/80 hover:text-white">
+              <div>
+                <span class="font-display text-xs font-bold uppercase block transition">EMERGENCY DISPATCH</span>
+                <span class="text-[9px] font-mono text-red-500 block uppercase leading-none mt-0.5 font-bold">2-Hour Local Action Response</span>
+              </div>
+              <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange check-indicator timeline-indicator" style="display: none;"></i>
+            </button>
+            <button data-value="Within 30 Days" class="timeline-grid-option flex items-center justify-between px-4 py-3 rounded border text-left text-sm transition-all duration-200 border-brand-orange bg-brand-orange/10 text-white font-semibold">
+              <div>
+                <span class="font-display text-xs font-bold uppercase block transition">SCHEDULED OUTAGE</span>
+                <span class="text-[9px] font-mono text-brand-gray block uppercase leading-none mt-0.5">Fulfillment Within 30 Days</span>
+              </div>
+              <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange check-indicator timeline-indicator"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3 CONTAINER: Direct forms contact details -->
+      <div id="wizard-step-3" class="space-y-4" style="display: none;">
+        <form id="quote-proposal-form-wrapper" class="space-y-3 font-mono text-[11px] text-left">
+          <div class="grid gap-3 md:grid-cols-2">
+            <div>
+              <label class="block text-[10px] font-bold text-slate-300 uppercase mb-1">Full Name *</label>
+              <input type="text" name="fullName" placeholder="Javarius Gay" class="w-full bg-brand-dark border border-slate-800 rounded px-3 py-1.5 text-white focus:outline-none focus:border-brand-orange">
+              <p class="text-[9px] text-red-400 mt-0.5 error-feedback" id="err-q-name"></p>
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold text-slate-300 uppercase mb-1">Corporate / Company *</label>
+              <input type="text" name="company" placeholder="Atlanta Energy Corp" class="w-full bg-brand-dark border border-slate-800 rounded px-3 py-1.5 text-white focus:outline-none focus:border-brand-orange">
+              <p class="text-[9px] text-red-400 mt-0.5 error-feedback" id="err-q-company"></p>
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold text-slate-300 uppercase mb-1">Corporate Email *</label>
+              <input type="email" name="email" placeholder="contact@atlenergy.com" class="w-full bg-brand-dark border border-slate-800 rounded px-3 py-1.5 text-white focus:outline-none focus:border-brand-orange">
+              <p class="text-[9px] text-red-400 mt-0.5 error-feedback" id="err-q-email"></p>
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold text-slate-300 uppercase mb-1">Contact Telephone *</label>
+              <input type="tel" name="phone" placeholder="+1 (404) 740-1850" class="w-full bg-brand-dark border border-slate-800 rounded px-3 py-1.5 text-white focus:outline-none focus:border-brand-orange">
+              <p class="text-[9px] text-red-400 mt-0.5 error-feedback" id="err-q-phone"></p>
+            </div>
+          </div>
+          <div>
+            <label class="block text-[10px] font-bold text-slate-300 uppercase mb-1">Detailed Specifications (Optional)</label>
+            <textarea name="details" rows="3" placeholder="Provide alloy numbers, water pressure limits, or scheduled plant shutdown dates..." class="w-full bg-brand-dark border border-slate-800 rounded px-3 py-2 text-white focus:outline-none focus:border-brand-orange placeholder:text-slate-700"></textarea>
+          </div>
+          <button type="submit" id="hidden-wizard-submit" style="display: none;"></button>
+        </form>
+      </div>
+
+      <!-- STEP success CONTAINER: Output confirmation -->
+      <div id="wizard-step-success" class="space-y-6 text-center py-6" style="display: none;">
+        <div class="h-16 w-16 bg-brand-orange/15 rounded-full flex items-center justify-center text-brand-orange mx-auto animate-bounce">
+          <i data-lucide="shield-check" class="w-8 h-8"></i>
+        </div>
+        <div class="space-y-2">
+          <h4 class="font-display font-black text-xl text-white uppercase tracking-wider">PROPOSAL PAC REGISTERED</h4>
+          <p class="text-xs text-brand-gray max-w-sm mx-auto leading-relaxed font-sans">
+            Your technical parameters have been secure-logged by our dispatcher board, a dispatcher ticket has been opened under details below.
+          </p>
+        </div>
+
+        <div class="bg-brand-dark border border-slate-850 rounded p-4 text-left font-mono text-[11px] space-y-2 max-w-sm mx-auto">
+          <div class="flex justify-between border-b border-slate-900 pb-1.5 text-brand-orange font-bold">
+            <span>TICKET RECEIPT ID:</span>
+            <span id="success-summary-ticket">TBL-2026-A28F3E</span>
+          </div>
+          <div class="flex justify-between border-b border-slate-900 pb-1.5">
+            <span class="text-slate-400">BOILER CATEGORY:</span>
+            <span class="text-slate-200" id="success-summary-system">Steam Generation</span>
+          </div>
+          <div class="flex justify-between border-b border-slate-900 pb-1.5">
+            <span class="text-slate-400">SERVICE NEEDED:</span>
+            <span class="text-slate-200" id="success-summary-service">New Installation</span>
+          </div>
+          <div class="flex justify-between border-b border-slate-900 pb-1.5">
+            <span class="text-slate-400">DISPATCH ACCOUNT:</span>
+            <span class="text-slate-200" id="success-summary-contact">Javarius Gay</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-400">TARGET TIMELINE:</span>
+            <span class="text-brand-yellow font-bold uppercase" id="success-summary-priority">SCHEDULED</span>
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <button id="quote-modal-dismiss-btn" class="px-8 py-3 bg-brand-orange font-display font-black text-xs text-brand-dark uppercase tracking-widest rounded transition hover:bg-brand-orange/80">
+            DISMISS SECURITY PORTAL
+          </button>
+        </div>
+      </div>
+
+      <!-- Progressive Navigation buttons -->
+      <div class="mt-8 pt-4 border-t border-slate-900 flex justify-between items-center">
+        <button id="quote-wizard-prev-btn" class="px-5 py-2.5 bg-brand-navy border border-slate-800 hover:border-slate-700 text-slate-300 font-mono text-[10px] font-bold uppercase tracking-widest rounded transition flex items-center gap-1.5" style="visibility: hidden;">
+          <i data-lucide="chevron-left" class="w-3.5 h-3.5"></i> PREVIOUS STEP
+        </button>
+        <button id="quote-wizard-next-btn" class="px-5 py-2.5 bg-brand-orange hover:bg-brand-orange/90 text-brand-dark font-mono text-[10px] font-bold uppercase tracking-widest rounded transition flex items-center gap-1.5">
+          CONTINUE FORWARD <i data-lucide="chevron-right" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+        </button>
+        <button id="quote-wizard-submit-btn" onclick="document.getElementById('hidden-wizard-submit').click()" class="px-5 py-2.5 bg-brand-orange hover:bg-brand-orange/90 text-brand-dark font-mono text-[10px] font-bold uppercase tracking-widest rounded transition flex items-center gap-1.5" style="display: none;">
+          SUBMIT SPECIFICATIONS <i data-lucide="check" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Main scripts inclusion -->
+  <script src="./script.js"></script>
+</body>
+</html>
