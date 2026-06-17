@@ -98,17 +98,11 @@
         <a href="industries.html" class="nav-link py-2 relative transition duration-300 hover:text-white hover:text-[#38bdf8]">INDUSTRIES</a>
         <a href="blog-news.html" class="nav-link py-2 relative transition duration-300 hover:text-white hover:text-[#38bdf8]">BLOG & NEWS</a>
         <a href="contact.html" class="nav-link py-2 relative transition duration-300 hover:text-white hover:text-[#38bdf8]">CONTACT US</a>
-        <a href="client-portal.html" class="nav-link py-2 relative transition duration-300 hover:text-white hover:text-[#38bdf8]">CLIENT PORTAL</a>
       </nav>
 
       <!-- CTA / Lock Block from screenshot -->
       <div class="flex items-center gap-3">
-        <!-- Client Portal Lock Button -->
-        <a href="client-portal.html" class="hidden xl:flex items-center gap-1.5 border border-slate-800 bg-black hover:bg-slate-900 transition px-3.5 py-2.5 rounded font-display font-extrabold text-[10px] tracking-widest uppercase text-white shadow-sm shrink-0">
-          <i data-lucide="lock" class="w-3.5 h-3.5 text-[#38bdf8] stroke-[2.5]"></i>
-          <span>CLIENT PORTAL</span>
-        </a>
-        <button onclick="openModal()" class="hidden sm:inline-block px-5 py-2.5 bg-[#0ea5e9] hover:bg-[#0284c7] text-white font-display font-black text-[10px] tracking-widest rounded-md uppercase transition shadow-md shadow-sky-500/20 transform active:scale-95 shrink-0">
+         <button onclick="openModal()" class="hidden sm:inline-block px-5 py-2.5 bg-[#0ea5e9] hover:bg-[#0284c7] text-white font-display font-black text-[10px] tracking-widest rounded-md uppercase transition shadow-md shadow-sky-500/20 transform active:scale-95 shrink-0">
           REQUEST A QUOTE
         </button>
         <button id="mobile-menu-open-btn" class="lg:hidden h-10 w-10 border border-slate-800 rounded flex items-center justify-center text-slate-300 hover:text-white transition bg-black" aria-label="Toggle Navigation Panel">
@@ -138,7 +132,6 @@
         <a href="industries.html" class="hover:text-brand-orange transition py-1 text-slate-300">Industries</a>
         <a href="blog-news.html" class="hover:text-brand-orange transition py-1 text-slate-300">Newsroom</a>
         <a href="contact.html" class="hover:text-brand-orange transition py-1 text-slate-300">Contact Us</a>
-        <a href="client-portal.html" class="hover:text-brand-orange transition py-1 text-slate-300">Client Portal</a>
       </nav>
     </div>
     <div class="space-y-4">
@@ -156,6 +149,11 @@
   <main>
     <!-- 2. HEADER HERO STORY -->
     <section class="relative bg-brand-dark border-b border-slate-900 py-16 md:py-24 text-center px-4 overflow-hidden blueprint-overlay">
+      <!-- Background Boiler Machine Image -->
+      <div class="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden opacity-[0.08]">
+        <img src="./assets/images/services_boiler_illustration.jpg" alt="Projects Boiler Background" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-b from-brand-dark via-transparent to-brand-dark"></div>
+      </div>
       <div class="max-w-4xl mx-auto relative z-10 space-y-4">
         <span class="font-mono text-xs uppercase text-brand-orange tracking-widest font-bold block">
           THE BOILER LLC PROJECTS
@@ -200,7 +198,7 @@
           <div class="bg-[#0b0e22] border border-slate-800 rounded-lg overflow-hidden p-6 md:p-8 flex flex-col justify-between hover:border-brand-orange/40 transition duration-200 relative group animate-fade-in">
             <!-- Image Frame -->
             <div class="border border-slate-850 rounded-lg overflow-hidden h-44 relative mb-6 group-hover:border-slate-750 transition">
-              <img src="https://picsum.photos/seed/boiler-weld-0/640/360" alt="Water-Tube Boiler Overhaul" class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition duration-350 filter saturate-50 hover:saturate-100" referrerPolicy="no-referrer">
+              <img src="./assets/images/hero_boiler_illustration.jpg" alt="Water-Tube Boiler Overhaul" class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition duration-350 filter saturate-50 hover:saturate-100" referrerPolicy="no-referrer">
               <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/95 via-transparent to-transparent opacity-85"></div>
               <span class="absolute bottom-3 left-4 font-mono text-[9px] text-[#94a3b8] bg-brand-dark/90 px-2 py-0.5 rounded border border-slate-800 uppercase tracking-widest font-semibold">
                 SYSTEM PROJECT REGISTER INDEX • 01
@@ -265,7 +263,7 @@
           <div class="bg-[#0b0e22] border border-slate-800 rounded-lg overflow-hidden p-6 md:p-8 flex flex-col justify-between hover:border-brand-orange/40 transition duration-200 relative group animate-fade-in">
             <!-- Image Frame -->
             <div class="border border-slate-850 rounded-lg overflow-hidden h-44 relative mb-6 group-hover:border-slate-750 transition">
-              <img src="https://picsum.photos/seed/boiler-weld-1/640/360" alt="Emergency Medical Boiler Re-Tube" class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition duration-350 filter saturate-50 hover:saturate-100" referrerPolicy="no-referrer">
+              <img src="./assets/images/client_boiler_illustration.jpg" alt="Emergency Medical Boiler Re-Tube" class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition duration-350 filter saturate-50 hover:saturate-100" referrerPolicy="no-referrer">
               <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/95 via-transparent to-transparent opacity-85"></div>
               <span class="absolute bottom-3 left-4 font-mono text-[9px] text-[#94a3b8] bg-brand-dark/90 px-2 py-0.5 rounded border border-slate-800 uppercase tracking-widest font-semibold">
                 SYSTEM PROJECT REGISTER INDEX • 02
@@ -330,7 +328,7 @@
           <div class="bg-[#0b0e22] border border-slate-800 rounded-lg overflow-hidden p-6 md:p-8 flex flex-col justify-between hover:border-brand-orange/40 transition duration-200 relative group animate-fade-in">
             <!-- Image Frame -->
             <div class="border border-slate-850 rounded-lg overflow-hidden h-44 relative mb-6 group-hover:border-slate-750 transition">
-              <img src="https://picsum.photos/seed/boiler-weld-2/640/360" alt="Automated Biomass Steam Integration" class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition duration-350 filter saturate-50 hover:saturate-100" referrerPolicy="no-referrer">
+              <img src="./assets/images/about_boiler_illustration.jpg" alt="Automated Biomass Steam Integration" class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition duration-350 filter saturate-50 hover:saturate-100" referrerPolicy="no-referrer">
               <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/95 via-transparent to-transparent opacity-85"></div>
               <span class="absolute bottom-3 left-4 font-mono text-[9px] text-[#94a3b8] bg-brand-dark/90 px-2 py-0.5 rounded border border-slate-800 uppercase tracking-widest font-semibold">
                 SYSTEM PROJECT REGISTER INDEX • 03
@@ -395,7 +393,7 @@
           <div class="bg-[#0b0e22] border border-slate-800 rounded-lg overflow-hidden p-6 md:p-8 flex flex-col justify-between hover:border-brand-orange/40 transition duration-200 relative group animate-fade-in">
             <!-- Image Frame -->
             <div class="border border-slate-850 rounded-lg overflow-hidden h-44 relative mb-6 group-hover:border-slate-755 transition">
-              <img src="https://picsum.photos/seed/boiler-weld-3/640/360" alt="State University Heating Grid Renovation" class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition duration-350 filter saturate-50 hover:saturate-100" referrerPolicy="no-referrer">
+              <img src="./assets/images/services_boiler_illustration.jpg" alt="State University Heating Grid Renovation" class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition duration-350 filter saturate-50 hover:saturate-100" referrerPolicy="no-referrer">
               <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/95 via-transparent to-transparent opacity-85"></div>
               <span class="absolute bottom-3 left-4 font-mono text-[9px] text-[#94a3b8] bg-brand-dark/90 px-2 py-0.5 rounded border border-slate-800 uppercase tracking-widest font-semibold">
                 SYSTEM PROJECT REGISTER INDEX • 04
@@ -460,7 +458,7 @@
           <div class="bg-[#0b0e22] border border-slate-800 rounded-lg overflow-hidden p-6 md:p-8 flex flex-col justify-between hover:border-brand-orange/40 transition duration-200 relative group animate-fade-in">
             <!-- Image Frame -->
             <div class="border border-slate-850 rounded-lg overflow-hidden h-44 relative mb-6 group-hover:border-slate-755 transition">
-              <img src="https://picsum.photos/seed/boiler-weld-4/640/360" alt="Process Steam Line Pipe Isolation" class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition duration-350 filter saturate-50 hover:saturate-100" referrerPolicy="no-referrer">
+              <img src="./assets/images/industries_boiler_illustration.jpg" alt="Process Steam Line Pipe Isolation" class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition duration-350 filter saturate-50 hover:saturate-100" referrerPolicy="no-referrer">
               <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/95 via-transparent to-transparent opacity-85"></div>
               <span class="absolute bottom-3 left-4 font-mono text-[9px] text-[#94a3b8] bg-brand-dark/90 px-2 py-0.5 rounded border border-slate-800 uppercase tracking-widest font-semibold">
                 SYSTEM PROJECT REGISTER INDEX • 05

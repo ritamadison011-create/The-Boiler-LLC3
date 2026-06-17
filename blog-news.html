@@ -98,17 +98,11 @@
         <a href="industries.html" class="nav-link py-2 relative transition duration-300 hover:text-white hover:text-[#38bdf8]">INDUSTRIES</a>
         <a href="blog-news.html" class="nav-link py-2 relative transition duration-300 text-[#38bdf8] border-b-2 border-[#38bdf8] pb-1 font-black">BLOG & NEWS</a>
         <a href="contact.html" class="nav-link py-2 relative transition duration-300 hover:text-white hover:text-[#38bdf8]">CONTACT US</a>
-        <a href="client-portal.html" class="nav-link py-2 relative transition duration-300 hover:text-white hover:text-[#38bdf8]">CLIENT PORTAL</a>
       </nav>
 
       <!-- CTA / Lock Block from screenshot -->
       <div class="flex items-center gap-3">
-        <!-- Client Portal Lock Button -->
-        <a href="client-portal.html" class="hidden xl:flex items-center gap-1.5 border border-slate-800 bg-black hover:bg-slate-900 transition px-3.5 py-2.5 rounded font-display font-extrabold text-[10px] tracking-widest uppercase text-white shadow-sm shrink-0">
-          <i data-lucide="lock" class="w-3.5 h-3.5 text-[#38bdf8] stroke-[2.5]"></i>
-          <span>CLIENT PORTAL</span>
-        </a>
-        <button onclick="openModal()" class="hidden sm:inline-block px-5 py-2.5 bg-[#0ea5e9] hover:bg-[#0284c7] text-white font-display font-black text-[10px] tracking-widest rounded-md uppercase transition shadow-md shadow-sky-500/20 transform active:scale-95 shrink-0">
+         <button onclick="openModal()" class="hidden sm:inline-block px-5 py-2.5 bg-[#0ea5e9] hover:bg-[#0284c7] text-white font-display font-black text-[10px] tracking-widest rounded-md uppercase transition shadow-md shadow-sky-500/20 transform active:scale-95 shrink-0">
           REQUEST A QUOTE
         </button>
         <button id="mobile-menu-open-btn" class="lg:hidden h-10 w-10 border border-slate-800 rounded flex items-center justify-center text-slate-300 hover:text-white transition bg-black" aria-label="Toggle Navigation Panel">
@@ -138,7 +132,6 @@
         <a href="industries.html" class="hover:text-brand-orange transition py-1 text-slate-300">Industries</a>
         <a href="blog-news.html" class="hover:text-brand-orange transition py-1 text-slate-300">Newsroom</a>
         <a href="contact.html" class="hover:text-brand-orange transition py-1 text-slate-300">Contact Us</a>
-        <a href="client-portal.html" class="hover:text-brand-orange transition py-1 text-slate-300">Client Portal</a>
       </nav>
     </div>
     <div class="space-y-4">
@@ -156,6 +149,11 @@
   <main>
     <!-- 2. HEADER HERO STORY -->
     <section class="relative bg-brand-dark border-b border-slate-900 py-16 md:py-24 text-center px-4 overflow-hidden blueprint-overlay">
+      <!-- Background Boiler Machine Image -->
+      <div class="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden opacity-[0.08]">
+        <img src="./assets/images/hero_boiler_illustration.jpg" alt="Blog Boiler Background" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-b from-brand-dark via-transparent to-brand-dark"></div>
+      </div>
       <div class="max-w-4xl mx-auto relative z-10 space-y-4">
         <span class="font-mono text-xs uppercase text-brand-orange tracking-widest font-bold block">
           THE BOILER LLC NEWSROOM
@@ -173,6 +171,25 @@
     <!-- 3. ARTICLE REGISTRY EXPLORER grid -->
     <section class="py-20 bg-[#070913] border-b border-slate-900">
       <div class="max-w-7xl mx-auto px-4 md:px-8 space-y-10">
+
+        <!-- Industrial Boiler Illustration Banner -->
+        <div class="border border-slate-850 bg-brand-dark/40 rounded-xl overflow-hidden relative group shadow-2xl">
+          <div class="h-64 sm:h-80 w-full relative">
+            <img src="./assets/images/hero_boiler_illustration.jpg" alt="Industrial Steam Boiler Inspection and Technical System Logs" class="w-full h-full object-cover opacity-70 group-hover:opacity-85 transition duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#070913] via-transparent to-brand-dark/40"></div>
+            <div class="absolute bottom-6 left-6 right-6 text-left space-y-2 relative z-10">
+              <span class="inline-block bg-[#0ea5e9]/10 border border-[#0ea5e9]/20 text-[#38bdf8] px-3 py-1 rounded font-mono text-[9px] uppercase tracking-widest font-black leading-none">
+                TECHNICAL INTEL GRID
+              </span>
+              <h2 class="font-display font-black text-xl sm:text-2xl md:text-3xl uppercase tracking-wider text-white">
+                THERMAL REGULATORY &amp; WELDING REVIEWS
+              </h2>
+              <p class="text-slate-300 text-xs max-w-2xl leading-relaxed font-sans">
+                Our active dispatch engineers compile high-pressure steam case logs and mechanical insights to assist facility managers in avoiding thermal shuttable fractions.
+              </p>
+            </div>
+          </div>
+        </div>
         
         <!-- Search filter headers block shadow -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center border-b border-slate-900 pb-8">
