@@ -22,6 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Mobile menu control toggles
   initMobileMenu();
 
+  // Sliding nav indicator & Scroll spy systems
+  initNavIndicator();
+  initScrollSpy();
+
   // Home page FAQ Accordions
   initFaqAccordions();
 
@@ -52,20 +56,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /* ==========================================================
-1. NAVIGATION HIGH-LIGHTER & HEADER ACCENTS
+1. NAVIGATION HIGH-LIGHTER, SCROLL SPY & MAGIC LINE
 ========================================================== */
+let updateNavIndicator = null; // Global reference for repositioning dynamically
+
 function highlightActiveLink() {
   const path = window.location.pathname;
   const pageName = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
   
-  const navLinks = document.querySelectorAll('.nav-link');
+  const navLinks = document.querySelectorAll('.nav-link, #mobile-menu-drawer nav a');
   navLinks.forEach(link => {
     const href = link.getAttribute('href');
     if (href === pageName || (pageName === 'index.html' && href === '/')) {
-      link.classList.add('active', 'text-brand-orange');
-      link.classList.remove('text-slate-200');
+      link.classList.add('active');
     } else {
-      link.classList.remove('active', 'text-brand-orange');
+      link.classList.remove('active');
     }
   });
 }
@@ -74,13 +79,116 @@ function initStickyHeader() {
   const header = document.getElementById('main-fixed-header');
   if (!header) return;
 
-  window.addEventListener('scroll', () => {
+  const updateHeader = () => {
     if (window.scrollY > 40) {
       header.classList.add('bg-brand-dark/95', 'backdrop-blur-md', 'border-b', 'border-slate-800/80', 'shadow-lg', 'shadow-brand-dark/50', 'py-3');
-      header.classList.remove('bg-brand-dark', 'border-b', 'border-slate-900/50', 'py-5');
+      header.classList.remove('bg-brand-dark', 'border-b', 'border-slate-900/50', 'py-4');
     } else {
       header.classList.remove('bg-brand-dark/95', 'backdrop-blur-md', 'border-b', 'border-slate-800/80', 'shadow-lg', 'shadow-brand-dark/50', 'py-3');
-      header.classList.add('bg-brand-dark', 'border-b', 'border-slate-900/50', 'py-5');
+      header.classList.add('bg-brand-dark', 'border-b', 'border-slate-900/50', 'py-4');
+    }
+  };
+
+  window.addEventListener('scroll', updateHeader);
+  updateHeader(); // Run check immediately on load
+}
+
+function initNavIndicator() {
+  const nav = document.querySelector('header nav');
+  if (!nav) return;
+
+  // Ensure the indicator target behaves relative
+  nav.style.position = 'relative';
+
+  let indicator = document.getElementById('nav-indicator');
+  if (!indicator) {
+    indicator = document.createElement('div');
+    indicator.id = 'nav-indicator';
+    nav.appendChild(indicator);
+  }
+
+  const links = nav.querySelectorAll('.nav-link');
+
+  updateNavIndicator = function() {
+    const activeLink = nav.querySelector('.nav-link.active');
+    if (!activeLink) {
+      indicator.style.width = '0px';
+      return;
+    }
+    const navRect = nav.getBoundingClientRect();
+    const linkRect = activeLink.getBoundingClientRect();
+    
+    indicator.style.left = `${linkRect.left - navRect.left}px`;
+    indicator.style.width = `${linkRect.width}px`;
+  };
+
+  // Initially position it
+  setTimeout(updateNavIndicator, 150);
+
+  // Hover animations
+  links.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      const navRect = nav.getBoundingClientRect();
+      const linkRect = link.getBoundingClientRect();
+      indicator.style.left = `${linkRect.left - navRect.left}px`;
+      indicator.style.width = `${linkRect.width}px`;
+    });
+  });
+
+  // Restore position to currently active item on mouseout
+  nav.addEventListener('mouseleave', () => {
+    updateNavIndicator();
+  });
+
+  window.addEventListener('resize', updateNavIndicator);
+}
+
+function initScrollSpy() {
+  const path = window.location.pathname;
+  const pageName = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
+
+  // Override active link checks only on the Home main page index.html
+  if (pageName !== 'index.html' && pageName !== '') return;
+
+  const sections = [
+    { id: 'section-home', linkHref: 'index.html' },
+    { id: 'section-services', linkHref: 'services.html' },
+    { id: 'section-about', linkHref: 'about.html' },
+    { id: 'section-industries', linkHref: 'industries.html' },
+    { id: 'section-contact', linkHref: 'contact.html' }
+  ];
+
+  window.addEventListener('scroll', () => {
+    let activeSection = null;
+    const scrollPosition = window.scrollY + 160; // 160px precision offset covering navigation height
+
+    for (const sectionInfo of sections) {
+      const el = document.getElementById(sectionInfo.id);
+      if (el) {
+        const top = el.offsetTop;
+        const height = el.offsetHeight;
+        if (scrollPosition >= top && scrollPosition < top + height) {
+          activeSection = sectionInfo;
+          break;
+        }
+      }
+    }
+
+    if (activeSection) {
+      const navLinks = document.querySelectorAll('header nav .nav-link, #mobile-menu-drawer nav a');
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === activeSection.linkHref) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+
+      // Synchronize the sliding underline position
+      if (typeof updateNavIndicator === 'function') {
+        updateNavIndicator();
+      }
     }
   });
 }

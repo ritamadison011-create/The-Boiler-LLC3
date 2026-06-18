@@ -32,7 +32,60 @@ body {
   min-height: 100vh;
   margin: 0;
   display: flex;
-  flex-direction: col;
+  flex-direction: column;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url('./assets/images/hero_boiler_illustration.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Custom Boiler Machine Backgrounds for All Sections */
+section {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.05; /* Balanced subtle visibility that preserves high text contrast */
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Alternate specific images on different sections to create visually stunning layout variations */
+section:nth-of-type(5n+1)::before {
+  background-image: url('./assets/images/about_boiler_illustration.jpg');
+}
+
+section:nth-of-type(5n+2)::before {
+  background-image: url('./assets/images/services_boiler_illustration.jpg');
+}
+
+section:nth-of-type(5n+3)::before {
+  background-image: url('./assets/images/industries_boiler_illustration.jpg');
+}
+
+section:nth-of-type(5n+4)::before {
+  background-image: url('./assets/images/client_boiler_illustration.jpg');
+}
+
+section:nth-of-type(5n+5)::before {
+  background-image: url('./assets/images/hero_boiler_illustration.jpg');
 }
 
 main {
@@ -202,3 +255,149 @@ main {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* 7. CUSTOM HEADER ORANGE THEMING OVERRIDES */
+header nav {
+  position: relative !important;
+}
+
+header nav a.nav-link {
+  color: #cbd5e1 !important; /* Elegant slate default color for non-active items */
+  transition: color 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+  font-weight: 800 !important;
+  border-bottom: none !important; /* Ensure no inline border properties override this */
+  padding-bottom: 4px !important;
+}
+
+header nav a.nav-link:hover {
+  color: #ffffff !important; /* Highlighted text color on hover */
+}
+
+/* Active menu item styling */
+header nav a.nav-link.active {
+  color: #ff6a00 !important; /* Deep orange active color */
+}
+
+/* Disable the default hover pseudo-element since we use the sliding indicator */
+header nav a.nav-link::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Modern Sliding Underline Indicator */
+#nav-indicator {
+  position: absolute;
+  bottom: 0px;
+  height: 2.5px;
+  background-color: #ff6a00 !important;
+  box-shadow: 0 0 8px rgba(255, 106, 0, 0.6);
+  border-radius: 99px;
+  transition: left 0.35s cubic-bezier(0.25, 1, 0.5, 1), width 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+  z-index: 50;
+}
+
+header a.group span.text-white {
+  color: #ffffff !important;
+}
+
+header .text-\[\#38bdf8\] {
+  color: #ff6a00 !important;
+}
+
+header .hover\:text-\[\#38bdf8\]:hover {
+  color: #ff6a00 !important;
+}
+
+header .group-hover\:border-\[\#38bdf8\]:hover,
+header .group:hover .group-hover\:border-\[\#38bdf8\],
+header .group-hover\:border-\[\#38bdf8\] {
+  border-color: #ff6a00 !important;
+}
+
+header .border-\[\#38bdf8\] {
+  border-color: #ff6a00 !important;
+}
+
+header a[class*="text-[#38bdf8]"],
+header a[class*="border-[#38bdf8]"] {
+  color: #ff6a00 !important;
+  border-color: #ff6a00 !important;
+}
+
+/* 8. TRANSPARENT BLACK NAVIGATION & MENU DESIGNS */
+#main-fixed-header {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+#mobile-menu-drawer {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+/* Ensure link text in mobile-menu is super crisp against transparent backdrop */
+#mobile-menu-drawer nav a {
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+  font-weight: 900 !important;
+}
+
+#mobile-menu-drawer nav a.text-slate-300 {
+  color: #f1f5f9 !important; /* Force ultra-white slate for maximum legibility */
+}
+
+/* Highlight active link in mobile drawers */
+#mobile-menu-drawer nav a.active {
+  color: #ff6a00 !important; /* Deep active orange */
+  border-left: 3px solid #ff6a00 !important;
+  padding-left: 12px !important;
+  text-shadow: 0 0 8px rgba(255, 106, 0, 0.4);
+}
+
+/* 9. GLOBAL BRAND LOGO SCALE UP OVERRIDES */
+#main-fixed-header a.group .h-11.w-11 {
+  width: 4.5rem !important; /* VERY VERY BIG logo container (72px) */
+  height: 4.5rem !important;
+  border-width: 2px !important;
+  border-color: #ff6a00 !important;
+}
+
+#main-fixed-header a.group span.font-sans.font-black.text-xs {
+  font-size: 1.85rem !important; /* VERY VERY BIG "THE BOILER" & "LLC" typography (~30px) */
+  line-height: 0.95 !important;
+  letter-spacing: 0.02em !important;
+}
+
+#main-fixed-header a.group span.font-mono.text-\[7px\] {
+  font-size: 10px !important; /* VERY VERY BIG mechanical subtitle details */
+  letter-spacing: 0.16em !important;
+  line-height: 1.4 !important;
+}
+
+/* 10. SUBTLE ENTRANCE ROTATION FOR LOGO */
+@keyframes logoEntranceSpin {
+  0% {
+    transform: rotate(-180deg) scale(0.4);
+    opacity: 0;
+  }
+  60% {
+    transform: rotate(12deg) scale(1.05);
+    opacity: 0.9;
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+#main-fixed-header a.group .h-11.w-11 img {
+  transform-origin: center;
+  animation: logoEntranceSpin 1.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+
+
