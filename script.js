@@ -52,6 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Multi-step Proposal Quote wizard modal Core
   initQuoteProposalModal();
+
+  // Back to Top Button
+  initBackToTopButton();
 });
 
 
@@ -1321,3 +1324,55 @@ function initQuoteProposalModal() {
   window.openModal = openModal;
   window.closeModal = closeModal;
 }
+
+/* ==========================================================
+11. DYNAMIC INTERACTIVE BACK TO TOP FLOATING BUTTON
+========================================================== */
+function initBackToTopButton() {
+  if (document.getElementById('back-to-top-btn')) return;
+
+  const btn = document.createElement('button');
+  btn.id = 'back-to-top-btn';
+  // Standard exquisite styling using tailwind, smooth animations, hover state scaling up, transition scaling down
+  btn.className = 'fixed bottom-6 right-6 z-50 bg-[#070913]/90 hover:bg-[#ff6a00] text-[#ff6a00] hover:text-black border-2 border-[#ff6a00] h-12 w-12 rounded-full shadow-lg shadow-black/80 flex items-center justify-center transition-all duration-300 ease-in-out opacity-0 translate-y-8 pointer-events-none focus:outline-none focus:ring-4 focus:ring-[#ff6a00]/40 backdrop-blur-md scale-90 hover:scale-110 active:scale-95';
+  btn.setAttribute('aria-label', 'Back to top');
+  
+  // High accuracy up chevron SVG structure
+  btn.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-[3]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m18 15-6-6-6 6"/>
+    </svg>
+  `;
+
+  document.body.appendChild(btn);
+
+  // Smooth scroll handler
+  btn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  // viewport tracking
+  const checkVisibility = () => {
+    const heroSection = document.getElementById('section-home');
+    let thresholdHeight = 350;
+    
+    if (heroSection) {
+      thresholdHeight = heroSection.offsetHeight || 350;
+    }
+
+    if (window.scrollY > thresholdHeight) {
+      btn.classList.remove('opacity-0', 'translate-y-8', 'pointer-events-none', 'scale-90');
+      btn.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto', 'scale-100');
+    } else {
+      btn.classList.add('opacity-0', 'translate-y-8', 'pointer-events-none', 'scale-90');
+      btn.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto', 'scale-100');
+    }
+  };
+
+  window.addEventListener('scroll', checkVisibility);
+  checkVisibility(); // Run immediate check on initial rendering
+}
+
